@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="TngTech.ArchUnitNET.xUnit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Cta.Contracts\Cta.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\Cta.Core\Cta.Core.csproj" />
+    <ProjectReference Include="..\..\src\Cta.Storage\Cta.Storage.csproj" />
+    <ProjectReference Include="..\..\src\Cta.Cli\Cta.Cli.csproj" />
+  </ItemGroup>
+</Project>

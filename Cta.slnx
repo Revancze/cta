@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Cta.Cli/Cta.Cli.csproj" />
+    <Project Path="src/Cta.Contracts/Cta.Contracts.csproj" />
+    <Project Path="src/Cta.Core/Cta.Core.csproj" />
+    <Project Path="src/Cta.Storage/Cta.Storage.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Cta.Tests/Cta.Tests.csproj" />
+  </Folder>
+</Solution>

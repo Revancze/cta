@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Cta.Core\Cta.Core.csproj" />
+    <ProjectReference Include="..\Cta.Storage\Cta.Storage.csproj" />
+    <ProjectReference Include="..\Cta.Contracts\Cta.Contracts.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+</Project>
