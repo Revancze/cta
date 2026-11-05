@@ -37,6 +37,7 @@ public class ArchitectureTests
         .ResideInAssembly(typeof(Cli.AssemblyMarker).Assembly)
         .As("Cta.Cli");
 
+    // @relation(CTA-ARCH-001, scope=range_start)
     [Fact]
     public void Contracts_do_not_depend_on_other_projects()
     {
@@ -48,6 +49,9 @@ public class ArchitectureTests
             .Check(Model);
     }
 
+    // @relation(CTA-ARCH-001, scope=range_end)
+
+    // @relation(CTA-ARCH-002, scope=range_start)
     [Fact]
     public void Core_does_not_depend_on_storage_or_cli()
     {
@@ -59,9 +63,13 @@ public class ArchitectureTests
             .Check(Model);
     }
 
+    // @relation(CTA-ARCH-002, scope=range_end)
+
+    // @relation(CTA-ARCH-003, scope=range_start)
     [Fact]
     public void Storage_does_not_depend_on_cli()
     {
         Types().That().Are(Storage).Should().NotDependOnAny(Cli).Check(Model);
     }
+    // @relation(CTA-ARCH-003, scope=range_end)
 }

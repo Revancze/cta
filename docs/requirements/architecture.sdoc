@@ -1,0 +1,22 @@
+[DOCUMENT]
+TITLE: CTA – architektura
+
+[[SECTION]]
+TITLE: Závislosti mezi projekty
+
+[REQUIREMENT]
+UID: CTA-ARCH-001
+TITLE: Contracts nezávisí na ostatních projektech
+STATEMENT: Projekt Cta.Contracts nesmí záviset na Cta.Core, Cta.Storage ani Cta.Cli.
+
+[REQUIREMENT]
+UID: CTA-ARCH-002
+TITLE: Core nezávisí na Storage ani Cli
+STATEMENT: Projekt Cta.Core nesmí záviset na Cta.Storage ani Cta.Cli.
+
+[REQUIREMENT]
+UID: CTA-ARCH-003
+TITLE: Storage nezávisí na Cli
+STATEMENT: Projekt Cta.Storage nesmí záviset na Cta.Cli.
+
+[[/SECTION]]
