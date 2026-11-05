@@ -21,6 +21,8 @@ náhradu Azure DevOps Test Analytics.
 - **Odpověď na „proč“.** Ke každému pádu umí nástroj říct commit, od kterého test padá, co se
   mezi tím změnilo a jakou chybou.
 - **Výstup v příkazové řádce.** Například `cta show report 14` nebo `cta show graph`.
+- **Šetrný za běhu.** Reporty čte proudově, paměť neroste s velikostí vstupu a nezatěžuje
+  počítač víc, než je nutné. Velikost programu na disku nehraje roli.
 
 ## Výchozí stav (2. 11. 2026)
 
@@ -156,8 +158,11 @@ vygeneruje trasovací matici bez chyb.
 - [ ] Jedno spojení na import, jedna transakce, `foreign_keys = ON`, WAL
 - [ ] Výpočet Fingerprint a RunKey, idempotentní import
 - [ ] Testy: vytvoření DB, migrace z každé verze, duplicitní import, porušení cizího klíče
+- [ ] Test výkonu a paměti importu (čas, `GC.GetTotalAllocatedBytes`, 10 000 vs. 100 000 výsledků)
 
-**Brána G1:** import 10 000 výsledků do 2 s, druhý import téhož runu nezmění počet řádků.
+**Brána G1:** import 10 000 výsledků do 2 s a s nejvýše 50 MB alokací, druhý import téhož runu
+nezmění počet řádků. Alokace při importu 100 000 výsledků nejsou víc než 2× vyšší než při
+10 000.
 
 ### F2 – Parsery
 
@@ -334,4 +339,4 @@ se mohou změnit.
 - [ ] Výstup testu (stdout) – ukládat u všech výsledků, úspěšných i neúspěšných.
 - [x] Projekt začne znovu na čisto s nástroji ADR, StrictDoc, ArchUnitNET a Allure.
 - [x] Allure – stačí open source Allure Report, žádný server.
-- [ ] Potvrdit číselné limity v branách G1, G5 a G6.
+- [ ] Potvrdit číselné limity v branách G5 a G6.

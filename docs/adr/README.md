@@ -13,3 +13,4 @@ když se rozhodnutí změní, vznikne nový ADR a starý dostane stav `Nahrazeno
 | [0004](0004-on-demand-only.md) | Vše běží jen na vyžádání | Přijato |
 | [0005](0005-xunit-v2-runner-for-allure.md) | Runner xUnit 2.x kvůli Allure | Přijato |
 | [0006](0006-python-314-for-strictdoc.md) | Python 3.14 jen pro StrictDoc | Přijato |
+| [0007](0007-runtime-frugality.md) | Šetrnost za běhu | Přijato |
