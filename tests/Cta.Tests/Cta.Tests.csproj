@@ -10,6 +10,7 @@
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
     <PackageReference Include="TngTech.ArchUnitNET.xUnit" />
+    <PackageReference Include="Allure.Xunit" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,4 +23,13 @@
     <ProjectReference Include="..\..\src\Cta.Storage\Cta.Storage.csproj" />
     <ProjectReference Include="..\..\src\Cta.Cli\Cta.Cli.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="allureConfig.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!-- Allure appends to its results directory; start every test run from an empty one. -->
+  <Target Name="CleanAllureResults" BeforeTargets="VSTest">
+    <RemoveDir Directories="$(MSBuildThisFileDirectory)..\..\allure-results" />
+  </Target>
 </Project>
