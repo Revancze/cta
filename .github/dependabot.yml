@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      nuget:
+        patterns: ["*"]
+    ignore:
+      # ADR-0005: Allure.Xunit 2.x needs the xUnit v2 runner.
+      - dependency-name: xunit.runner.visualstudio
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+
+  - package-ecosystem: pip
+    directory: /tools
+    schedule:
+      interval: monthly

@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Build and test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          global-json-file: global.json
+
+      - name: Restore tools
+        run: dotnet tool restore
+
+      - name: Check formatting
+        run: dotnet csharpier check .
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Debug
+
+      - name: Test
+        run: dotnet test --no-build --configuration Debug
+
+      - name: Verify Allure results
+        shell: bash
+        run: |
+          count=$(find allure-results -name '*-result.json' 2>/dev/null | wc -l)
+          echo "Allure results: $count"
+          test "$count" -gt 0
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: allure-results-${{ matrix.os }}
+          path: allure-results/
+          retention-days: 7
+
+  requirements:
+    name: Requirements traceability
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: tools/requirements-docs.txt
+
+      - name: Install StrictDoc
+        run: pip install -r tools/requirements-docs.txt
+
+      - name: Export requirements and traceability matrix
+        run: strictdoc export . --formats html --output-dir output
+
+      - name: Upload StrictDoc HTML
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: strictdoc-html
+          path: output/html
+          retention-days: 7
