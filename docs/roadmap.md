@@ -153,12 +153,13 @@ vygeneruje trasovací matici bez chyb.
 
 ### F1 – Datový model a úložiště
 
-- [ ] Doménové typy (Run, TestCase, TestResult, Failure, Source) jako immutable recordy
-- [ ] Schéma v2 (viz Datový model) + `PRAGMA user_version` + číslované migrace
-- [ ] Jedno spojení na import, jedna transakce, `foreign_keys = ON`, WAL
-- [ ] Výpočet Fingerprint a RunKey, idempotentní import
-- [ ] Testy: vytvoření DB, migrace z každé verze, duplicitní import, porušení cizího klíče
-- [ ] Test výkonu a paměti importu (čas a alokace pro 10 000 výsledků, špička živé paměti
+- [x] Doménové typy (Run, TestCase, TestResult, Failure, Source) jako immutable recordy
+- [x] Schéma v2 (viz Datový model) + `PRAGMA user_version` + číslované migrace
+- [x] Jedno spojení na import, jedna transakce, `foreign_keys = ON`, WAL
+- [x] Výpočet Fingerprint a RunKey, idempotentní import
+- [x] Testy: vytvoření DB, duplicitní import, porušení cizího klíče
+- [ ] Test migrace z předchozí verze: až přibude druhá migrace, teď existuje jen jedna
+- [x] Test výkonu a paměti importu (čas a alokace pro 10 000 výsledků, špička živé paměti
       10 000 vs. 100 000)
 
 **Brána G1:** import 10 000 výsledků do 2 s a s nejvýše 50 MB alokací, druhý import téhož runu

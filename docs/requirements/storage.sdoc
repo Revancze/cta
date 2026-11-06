@@ -55,3 +55,19 @@ TITLE: Import je šetrný
 STATEMENT: Import 10 000 výsledků trvá nejvýše 2 s a alokuje nejvýše 50 MB. Špička živé paměti při 100 000 výsledcích není víc než 2× vyšší než při 10 000.
 
 [[/SECTION]]
+
+
+[[SECTION]]
+TITLE: Identita runu
+
+[REQUIREMENT]
+UID: CTA-ID-001
+TITLE: Otisk runu je stabilní
+STATEMENT: Fingerprint je SHA-256 ze seřazených SHA-256 všech zdrojových reportů. Nezávisí na pořadí reportů a jeho formát se nemění, jinak by se stejné reporty importovaly znovu. Report se hashuje proudově.
+
+[REQUIREMENT]
+UID: CTA-ID-002
+TITLE: Klíč runu určuje jeho původ
+STATEMENT: RunKey má tvar local/<počítač>/<čas UTC> pro lokální běh a ci/<workflow run id>/<attempt>/<job> pro běh v CI.
+
+[[/SECTION]]
