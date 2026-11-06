@@ -158,11 +158,12 @@ vygeneruje trasovací matici bez chyb.
 - [ ] Jedno spojení na import, jedna transakce, `foreign_keys = ON`, WAL
 - [ ] Výpočet Fingerprint a RunKey, idempotentní import
 - [ ] Testy: vytvoření DB, migrace z každé verze, duplicitní import, porušení cizího klíče
-- [ ] Test výkonu a paměti importu (čas, `GC.GetTotalAllocatedBytes`, 10 000 vs. 100 000 výsledků)
+- [ ] Test výkonu a paměti importu (čas a alokace pro 10 000 výsledků, špička živé paměti
+      10 000 vs. 100 000)
 
 **Brána G1:** import 10 000 výsledků do 2 s a s nejvýše 50 MB alokací, druhý import téhož runu
-nezmění počet řádků. Alokace při importu 100 000 výsledků nejsou víc než 2× vyšší než při
-10 000.
+nezmění počet řádků. Špička živé paměti při importu 100 000 výsledků není víc než 2× vyšší než
+při 10 000.
 
 ### F2 – Parsery
 
