@@ -14,6 +14,9 @@ public sealed record Run
 
     public required TimeSpan Duration { get; init; }
 
+    /// <summary>True when tests ran on a working tree with uncommitted changes.</summary>
+    public required bool WorkingTreeDirty { get; init; }
+
     public string? Repository { get; init; }
 
     public string? Branch { get; init; }

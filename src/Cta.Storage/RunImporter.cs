@@ -63,9 +63,11 @@ public static class RunImporter
         command.Transaction = transaction;
         command.CommandText = """
             INSERT INTO Runs (RunKey, Fingerprint, Origin, StartedUtc, Repository, Branch,
-                              CommitSha, Os, Framework, Configuration, DurationMs)
+                              CommitSha, WorkingTreeDirty, Os, Framework, Configuration,
+                              DurationMs)
             VALUES ($runKey, $fingerprint, $origin, $startedUtc, $repository, $branch,
-                    $commitSha, $os, $framework, $configuration, $durationMs)
+                    $commitSha, $workingTreeDirty, $os, $framework, $configuration,
+                    $durationMs)
             RETURNING RunId;
             """;
         command.Parameters.AddWithValue("$runKey", run.RunKey);
@@ -78,6 +80,7 @@ public static class RunImporter
         command.Parameters.AddWithValue("$repository", OrNull(run.Repository));
         command.Parameters.AddWithValue("$branch", OrNull(run.Branch));
         command.Parameters.AddWithValue("$commitSha", run.CommitSha);
+        command.Parameters.AddWithValue("$workingTreeDirty", run.WorkingTreeDirty ? 1 : 0);
         command.Parameters.AddWithValue("$os", OrNull(run.Os));
         command.Parameters.AddWithValue("$framework", OrNull(run.Framework));
         command.Parameters.AddWithValue("$configuration", OrNull(run.Configuration));

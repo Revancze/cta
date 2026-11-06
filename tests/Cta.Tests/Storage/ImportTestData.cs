@@ -14,6 +14,7 @@ internal static class ImportTestData
                 Origin = RunOrigin.Local,
                 StartedUtc = new DateTimeOffset(2026, 11, 6, 12, 0, 0, TimeSpan.Zero),
                 CommitSha = "abc123",
+                WorkingTreeDirty = false,
                 Duration = TimeSpan.FromSeconds(1),
             },
             Sources =

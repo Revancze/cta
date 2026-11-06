@@ -12,6 +12,30 @@ public sealed class RunImporterTests : IDisposable
 
     public void Dispose() => Directory.Delete(_directory, recursive: true);
 
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Working_tree_state_is_stored_with_the_run(bool dirty)
+    {
+        using var connection = CtaDatabase.Open(DatabasePath);
+        var import = ImportTestData.Create("run-1", 1);
+        var run = import.Run with { WorkingTreeDirty = dirty };
+
+        RunImporter.Import(
+            connection,
+            new RunImport
+            {
+                Run = run,
+                Sources = import.Sources,
+                Results = import.Results,
+            }
+        );
+
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT WorkingTreeDirty FROM Runs;";
+        Assert.Equal(dirty ? 1L : 0L, command.ExecuteScalar());
+    }
+
     // @relation(CTA-IMPORT-001, scope=range_start)
     [Fact]
     public void Import_stores_run_sources_and_results()

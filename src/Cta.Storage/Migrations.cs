@@ -18,6 +18,7 @@ internal static class Migrations
                 Repository     TEXT,
                 Branch         TEXT,
                 CommitSha      TEXT NOT NULL,
+                WorkingTreeDirty INTEGER NOT NULL CHECK (WorkingTreeDirty IN (0, 1)),
                 Os             TEXT,
                 Framework      TEXT,
                 Configuration  TEXT,
