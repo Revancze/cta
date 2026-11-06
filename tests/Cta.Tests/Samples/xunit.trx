@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="7115bfd5-bdf2-40df-882b-1d2e675d0fe9" name="user@machine 2026-11-06 15:56:31" runUser="machine\user" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T15:56:31.6051704+01:00" queuing="2026-11-06T15:56:31.6051708+01:00" start="2026-11-06T15:56:28.7313543+01:00" finish="2026-11-06T15:56:31.6153346+01:00" />
+  <TestSettings name="default" id="124d1704-2ef8-43ae-a450-fe8627a05a04">
+    <Deployment runDeploymentRoot="user_machine_2026-11-06_15_56_31" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="3fc93981-7562-4a90-a49b-02399f295adb" testId="0e6fbedc-c969-2488-6d5d-9b2fe2b68871" testName="Sample.Tests.CalculatorTests.Param(x: 1)" computerName="machine" duration="00:00:00.0005754" startTime="2026-11-06T15:56:31.4560921+01:00" endTime="2026-11-06T15:56:31.4561672+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3fc93981-7562-4a90-a49b-02399f295adb" />
+    <UnitTestResult executionId="845bf73f-ae1b-4560-80fd-0ae81fc9aacd" testId="01fd22ae-3d97-3e10-7843-38de0e77c052" testName="Sample.Tests.CalculatorTests.Passes" computerName="machine" duration="00:00:00.0007773" startTime="2026-11-06T15:56:31.4576935+01:00" endTime="2026-11-06T15:56:31.4585195+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="845bf73f-ae1b-4560-80fd-0ae81fc9aacd">
+      <Output>
+        <StdOut>hello output</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bb24425a-dd6a-4dbf-993e-79bad6d28190" testId="8b123ee6-9142-9dc9-3f66-42066f16832e" testName="Sample.Tests.CalculatorTests.Param(x: 2)" computerName="machine" duration="00:00:00.1275795" startTime="2026-11-06T15:56:31.3126552+01:00" endTime="2026-11-06T15:56:31.4471436+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bb24425a-dd6a-4dbf-993e-79bad6d28190" />
+    <UnitTestResult executionId="9daf51be-13b4-480c-991f-ddf6d2022af7" testId="555fd5ed-1d1c-2f55-f03a-36fd473d2763" testName="Sample.Tests.CalculatorTests.Throws" computerName="machine" duration="00:00:00.0001979" startTime="2026-11-06T15:56:31.4703562+01:00" endTime="2026-11-06T15:56:31.4704150+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9daf51be-13b4-480c-991f-ddf6d2022af7">
+      <Output>
+        <ErrorInfo>
+          <Message>System.InvalidOperationException : boom &lt;&amp;&gt; 42</Message>
+          <StackTrace>   at Sample.Tests.CalculatorTests.Throws() in C:\work\sample\Tests.cs:line 9&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3e757e03-a351-46b6-9e1d-8c3aa049d00d" testId="fec2560a-ac44-09b7-59c7-4b9f45007f5e" testName="Sample.Tests.CalculatorTests.Skipped" computerName="machine" duration="00:00:00.0010000" startTime="2026-11-06T15:56:31.4691838+01:00" endTime="2026-11-06T15:56:31.4694242+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3e757e03-a351-46b6-9e1d-8c3aa049d00d">
+      <Output>
+        <ErrorInfo>
+          <Message>not today</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ff786a43-c339-4b22-b64e-04cd07d9ff1c" testId="181d5ae6-a689-b67d-c8ab-82ba30166abc" testName="Sample.Tests.CalculatorTests.Fails" computerName="machine" duration="00:00:00.0063555" startTime="2026-11-06T15:56:31.4588931+01:00" endTime="2026-11-06T15:56:31.4631534+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ff786a43-c339-4b22-b64e-04cd07d9ff1c">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   2</Message>
+          <StackTrace>   at Sample.Tests.CalculatorTests.Fails() in C:\work\sample\Tests.cs:line 6&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Sample.Tests.CalculatorTests.Passes" storage="C:\work\sample\bin\debug\net10.0\samplexunit.dll" id="01fd22ae-3d97-3e10-7843-38de0e77c052">
+      <Execution id="845bf73f-ae1b-4560-80fd-0ae81fc9aacd" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleXunit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Sample.Tests.CalculatorTests" name="Passes" />
+    </UnitTest>
+    <UnitTest name="Sample.Tests.CalculatorTests.Throws" storage="C:\work\sample\bin\debug\net10.0\samplexunit.dll" id="555fd5ed-1d1c-2f55-f03a-36fd473d2763">
+      <Execution id="9daf51be-13b4-480c-991f-ddf6d2022af7" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleXunit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Sample.Tests.CalculatorTests" name="Throws" />
+    </UnitTest>
+    <UnitTest name="Sample.Tests.CalculatorTests.Fails" storage="C:\work\sample\bin\debug\net10.0\samplexunit.dll" id="181d5ae6-a689-b67d-c8ab-82ba30166abc">
+      <Execution id="ff786a43-c339-4b22-b64e-04cd07d9ff1c" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleXunit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Sample.Tests.CalculatorTests" name="Fails" />
+    </UnitTest>
+    <UnitTest name="Sample.Tests.CalculatorTests.Param(x: 2)" storage="C:\work\sample\bin\debug\net10.0\samplexunit.dll" id="8b123ee6-9142-9dc9-3f66-42066f16832e">
+      <Execution id="bb24425a-dd6a-4dbf-993e-79bad6d28190" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleXunit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Sample.Tests.CalculatorTests" name="Param" />
+    </UnitTest>
+    <UnitTest name="Sample.Tests.CalculatorTests.Param(x: 1)" storage="C:\work\sample\bin\debug\net10.0\samplexunit.dll" id="0e6fbedc-c969-2488-6d5d-9b2fe2b68871">
+      <Execution id="3fc93981-7562-4a90-a49b-02399f295adb" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleXunit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Sample.Tests.CalculatorTests" name="Param" />
+    </UnitTest>
+    <UnitTest name="Sample.Tests.CalculatorTests.Skipped" storage="C:\work\sample\bin\debug\net10.0\samplexunit.dll" id="fec2560a-ac44-09b7-59c7-4b9f45007f5e">
+      <Execution id="3e757e03-a351-46b6-9e1d-8c3aa049d00d" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleXunit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Sample.Tests.CalculatorTests" name="Skipped" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="0e6fbedc-c969-2488-6d5d-9b2fe2b68871" executionId="3fc93981-7562-4a90-a49b-02399f295adb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="01fd22ae-3d97-3e10-7843-38de0e77c052" executionId="845bf73f-ae1b-4560-80fd-0ae81fc9aacd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8b123ee6-9142-9dc9-3f66-42066f16832e" executionId="bb24425a-dd6a-4dbf-993e-79bad6d28190" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="555fd5ed-1d1c-2f55-f03a-36fd473d2763" executionId="9daf51be-13b4-480c-991f-ddf6d2022af7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fec2560a-ac44-09b7-59c7-4b9f45007f5e" executionId="3e757e03-a351-46b6-9e1d-8c3aa049d00d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="181d5ae6-a689-b67d-c8ab-82ba30166abc" executionId="ff786a43-c339-4b22-b64e-04cd07d9ff1c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Výsledky neuvedené v seznamu" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Všechny načtené výsledky" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="6" executed="5" passed="3" failed="2" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.13)&#xD;
+[xUnit.net 00:00:00.83]   Discovering: SampleXunit&#xD;
+[xUnit.net 00:00:00.87]   Discovered:  SampleXunit&#xD;
+[xUnit.net 00:00:00.89]   Starting:    SampleXunit&#xD;
+[xUnit.net 00:00:01.07]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.07]       Expected: 1&#xD;
+[xUnit.net 00:00:01.07]       Actual:   2&#xD;
+[xUnit.net 00:00:01.07]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.07]         C:\work\sample\Tests.cs(6,0): at Sample.Tests.CalculatorTests.Fails()&#xD;
+[xUnit.net 00:00:01.07]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:01.07]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.07]       not today&#xD;
+[xUnit.net 00:00:01.07]       System.InvalidOperationException : boom &lt;&amp;&gt; 42&#xD;
+[xUnit.net 00:00:01.07]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.07]         C:\work\sample\Tests.cs(9,0): at Sample.Tests.CalculatorTests.Throws()&#xD;
+[xUnit.net 00:00:01.07]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:01.07]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.07]   Finished:    SampleXunit&#xD;
+V testovacím běhu se přeskočil test Sample.Tests.CalculatorTests.Skipped.&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="machine" outcome="Error" timestamp="2026-11-06T15:56:31.4665999+01:00">
+        <Text>[xUnit.net 00:00:01.06]     Sample.Tests.CalculatorTests.Fails [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="machine" outcome="Warning" timestamp="2026-11-06T15:56:31.4699352+01:00">
+        <Text>[xUnit.net 00:00:01.07]     Sample.Tests.CalculatorTests.Skipped [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="machine" outcome="Error" timestamp="2026-11-06T15:56:31.4705418+01:00">
+        <Text>[xUnit.net 00:00:01.07]     Sample.Tests.CalculatorTests.Throws [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

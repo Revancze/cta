@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="dc4eab4e-f8c8-429f-aef0-b82c927f996d" name="user@machine 2026-11-06 15:56:37" runUser="machine\user" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T15:56:37.4569767+01:00" queuing="2026-11-06T15:56:37.4569771+01:00" start="2026-11-06T15:56:34.5556412+01:00" finish="2026-11-06T15:56:37.4635884+01:00" />
+  <TestSettings name="default" id="2289e721-9f2c-4046-9388-b2d140bf441d">
+    <Deployment runDeploymentRoot="user_machine_2026-11-06_15_56_37" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="b637aa94-499b-439f-a4ed-70c4dca28736" testId="e1a4334a-7e9c-3f54-912d-1d56db4cc75e" testName="Unclear" computerName="machine" duration="00:00:00.0003980" startTime="2026-11-06T15:56:37.3263187+01:00" endTime="2026-11-06T15:56:37.3267166+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b637aa94-499b-439f-a4ed-70c4dca28736">
+      <Output>
+        <StdOut>maybe</StdOut>
+        <ErrorInfo>
+          <Message>maybe</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d2e58d42-85bb-489a-ac7f-e1097528c7fe" testId="f128f1e1-ec76-1fc5-6195-c53b458dd3bc" testName="Throws" computerName="machine" duration="00:00:00.0016420" startTime="2026-11-06T15:56:37.3246639+01:00" endTime="2026-11-06T15:56:37.3263051+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2e58d42-85bb-489a-ac7f-e1097528c7fe">
+      <Output>
+        <ErrorInfo>
+          <Message>System.InvalidOperationException : boom &lt;&amp;&gt; 42</Message>
+          <StackTrace>   at Sample.Tests.CalculatorTests.Throws() in C:\work\sample\Tests.cs:line 9&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4d617d73-18c8-4ae7-b62d-fed1d265e43b" testId="800c37c2-5d10-7ce0-9671-91d513bc5111" testName="Param(2)" computerName="machine" duration="00:00:00.0002100" startTime="2026-11-06T15:56:37.3226720+01:00" endTime="2026-11-06T15:56:37.3228819+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4d617d73-18c8-4ae7-b62d-fed1d265e43b" />
+    <UnitTestResult executionId="3ff2d5f1-7771-4b9a-82fa-af1898b45a50" testId="45bd45ea-edc5-c82e-c9b5-41819c10baa4" testName="Skipped" computerName="machine" duration="00:00:00.0001710" startTime="2026-11-06T15:56:37.3244884+01:00" endTime="2026-11-06T15:56:37.3246588+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3ff2d5f1-7771-4b9a-82fa-af1898b45a50">
+      <Output>
+        <StdOut>not today</StdOut>
+        <ErrorInfo>
+          <Message>not today</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="090f95ba-3d19-4549-9773-6d2f101ccc11" testId="471b1c64-0fef-b4ef-cf77-6f298d01819a" testName="Passes" computerName="machine" duration="00:00:00.0005440" startTime="2026-11-06T15:56:37.3239348+01:00" endTime="2026-11-06T15:56:37.3244783+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="090f95ba-3d19-4549-9773-6d2f101ccc11">
+      <Output>
+        <StdOut>hello output</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f1428359-ad1f-48e3-86cf-5495b6c42b39" testId="73d37a98-89ce-c9ac-b42c-8846c63847d7" testName="Param(1)" computerName="machine" duration="00:00:00.0011910" startTime="2026-11-06T15:56:37.3214633+01:00" endTime="2026-11-06T15:56:37.3226542+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f1428359-ad1f-48e3-86cf-5495b6c42b39" />
+    <UnitTestResult executionId="c22ad1ee-4e03-48ac-862a-d1f5b6c689df" testId="0a712cc6-f603-ddbd-672c-d90fdcedced4" testName="Fails" computerName="machine" duration="00:00:00.0340499" startTime="2026-11-06T15:56:37.2861637+01:00" endTime="2026-11-06T15:56:37.3201717+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c22ad1ee-4e03-48ac-862a-d1f5b6c689df">
+      <Output>
+        <ErrorInfo>
+          <Message>  Assert.That(1, Is.EqualTo(2))&#xD;
+  Expected: 2&#xD;
+  But was:  1&#xD;
+</Message>
+          <StackTrace>   at Sample.Tests.CalculatorTests.Fails() in C:\work\sample\Tests.cs:line 6&#xD;
+
+1)    at Sample.Tests.CalculatorTests.Fails() in C:\work\sample\Tests.cs:line 6&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Param(2)" storage="C:\work\sample\bin\debug\net10.0\samplenunit.dll" id="800c37c2-5d10-7ce0-9671-91d513bc5111">
+      <Execution id="4d617d73-18c8-4ae7-b62d-fed1d265e43b" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" adapterTypeName="executor://nunit3testexecutor/" className="Sample.Tests.CalculatorTests" name="Param(2)" />
+    </UnitTest>
+    <UnitTest name="Param(1)" storage="C:\work\sample\bin\debug\net10.0\samplenunit.dll" id="73d37a98-89ce-c9ac-b42c-8846c63847d7">
+      <Execution id="f1428359-ad1f-48e3-86cf-5495b6c42b39" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" adapterTypeName="executor://nunit3testexecutor/" className="Sample.Tests.CalculatorTests" name="Param(1)" />
+    </UnitTest>
+    <UnitTest name="Unclear" storage="C:\work\sample\bin\debug\net10.0\samplenunit.dll" id="e1a4334a-7e9c-3f54-912d-1d56db4cc75e">
+      <Execution id="b637aa94-499b-439f-a4ed-70c4dca28736" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" adapterTypeName="executor://nunit3testexecutor/" className="Sample.Tests.CalculatorTests" name="Unclear" />
+    </UnitTest>
+    <UnitTest name="Fails" storage="C:\work\sample\bin\debug\net10.0\samplenunit.dll" id="0a712cc6-f603-ddbd-672c-d90fdcedced4">
+      <Execution id="c22ad1ee-4e03-48ac-862a-d1f5b6c689df" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" adapterTypeName="executor://nunit3testexecutor/" className="Sample.Tests.CalculatorTests" name="Fails" />
+    </UnitTest>
+    <UnitTest name="Throws" storage="C:\work\sample\bin\debug\net10.0\samplenunit.dll" id="f128f1e1-ec76-1fc5-6195-c53b458dd3bc">
+      <Execution id="d2e58d42-85bb-489a-ac7f-e1097528c7fe" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" adapterTypeName="executor://nunit3testexecutor/" className="Sample.Tests.CalculatorTests" name="Throws" />
+    </UnitTest>
+    <UnitTest name="Passes" storage="C:\work\sample\bin\debug\net10.0\samplenunit.dll" id="471b1c64-0fef-b4ef-cf77-6f298d01819a">
+      <Execution id="090f95ba-3d19-4549-9773-6d2f101ccc11" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" adapterTypeName="executor://nunit3testexecutor/" className="Sample.Tests.CalculatorTests" name="Passes" />
+    </UnitTest>
+    <UnitTest name="Skipped" storage="C:\work\sample\bin\debug\net10.0\samplenunit.dll" id="45bd45ea-edc5-c82e-c9b5-41819c10baa4">
+      <Execution id="3ff2d5f1-7771-4b9a-82fa-af1898b45a50" />
+      <TestMethod codeBase="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" adapterTypeName="executor://nunit3testexecutor/" className="Sample.Tests.CalculatorTests" name="Skipped" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e1a4334a-7e9c-3f54-912d-1d56db4cc75e" executionId="b637aa94-499b-439f-a4ed-70c4dca28736" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f128f1e1-ec76-1fc5-6195-c53b458dd3bc" executionId="d2e58d42-85bb-489a-ac7f-e1097528c7fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="800c37c2-5d10-7ce0-9671-91d513bc5111" executionId="4d617d73-18c8-4ae7-b62d-fed1d265e43b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="45bd45ea-edc5-c82e-c9b5-41819c10baa4" executionId="3ff2d5f1-7771-4b9a-82fa-af1898b45a50" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="471b1c64-0fef-b4ef-cf77-6f298d01819a" executionId="090f95ba-3d19-4549-9773-6d2f101ccc11" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="73d37a98-89ce-c9ac-b42c-8846c63847d7" executionId="f1428359-ad1f-48e3-86cf-5495b6c42b39" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a712cc6-f603-ddbd-672c-d90fdcedced4" executionId="c22ad1ee-4e03-48ac-862a-d1f5b6c689df" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Výsledky neuvedené v seznamu" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Všechny načtené výsledky" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="7" executed="5" passed="3" failed="2" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 5.0.0.0: Test execution started&#xD;
+Running all tests in C:\work\sample\bin\Debug\net10.0\SampleNunit.dll&#xD;
+   NUnit3TestExecutor discovered 7 of 7 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+hello output&#xD;
+&#xD;
+Skipped: not today&#xD;
+Unclear: maybe&#xD;
+NUnit Adapter 5.0.0.0: Test execution complete&#xD;
+V testovacím běhu se přeskočil test Skipped.&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

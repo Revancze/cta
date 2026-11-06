@@ -1,0 +1,27 @@
+[DOCUMENT]
+TITLE: CTA – parsery
+
+[[SECTION]]
+TITLE: TRX
+
+[REQUIREMENT]
+UID: CTA-PARSE-001
+TITLE: TRX se přečte úplně
+STATEMENT: Parser přečte z TRX všechny výsledky včetně celého jména testu, výsledku, doby běhu, chyby, důvodu přeskočení a výstupu, a to z reportů xUnit i NUnit.
+
+[REQUIREMENT]
+UID: CTA-PARSE-002
+TITLE: Neúplný report se odmítne
+STATEMENT: Report s jiným počtem výsledků, než sám uvádí, bez čítačů, s neznámým výsledkem nebo jiného formátu parser odmítne. Nejistota se nikdy nezmění v úspěch.
+
+[REQUIREMENT]
+UID: CTA-PARSE-003
+TITLE: Otisk chyby seskupuje stejná selhání
+STATEMENT: Otisk tvoří typ výjimky, zpráva bez čísel, GUIDů a cest a první rámec stack trace. Stack trace neznámého formátu otisk nerozbije.
+
+[REQUIREMENT]
+UID: CTA-PARSE-004
+TITLE: Parser čte proudově
+STATEMENT: Špička živé paměti nezávisí na velikosti výstupů testů a při 100 000 výsledcích nepřekročí 32 MB. V paměti zůstávají jen identifikátory testů a sdílené názvy tříd.
+
+[[/SECTION]]

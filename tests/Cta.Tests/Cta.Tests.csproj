@@ -32,4 +32,7 @@
   <Target Name="CleanAllureResults" BeforeTargets="VSTest">
     <RemoveDir Directories="$(MSBuildThisFileDirectory)..\..\allure-results" />
   </Target>
+  <ItemGroup>
+    <None Include="Samples/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

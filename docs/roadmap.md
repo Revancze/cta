@@ -170,18 +170,19 @@ při 10 000.
 
 ### F2 – Parsery
 
-- [ ] TRX (`dotnet test --logger trx`), základní formát
+- [x] TRX (`dotnet test --logger trx`), základní formát: xUnit a NUnit; TRX z Microsoft.Testing.Platform zatím neověřený
 - [ ] xUnit v2 XML
 - [ ] JUnit XML, snapshot testy na reportech z více nástrojů (například pytest a CTest)
 - [ ] Detekce formátu podle obsahu, ne podle přípony
 - [ ] Normalizace stavů na výčet Passed / Failed / Error / Skipped / NotRun / Inconclusive
 - [ ] Stabilní identita testu: plné jméno + otisk parametrů (Theory/TestCase)
-- [ ] Otisk chyby: typ výjimky + normalizovaná zpráva (bez čísel, GUIDů, cest) + první rámec
+- [x] Otisk chyby: typ výjimky + normalizovaná zpráva (bez čísel, GUIDů, cest) + první rámec
       stacku; když stack trace nepozná, jen typ a zpráva
 - [ ] Snapshot testy na sadě vzorových reportů, včetně poškozených a prázdných
 
-**Brána G2:** všechny reporty ze vzorového .NET projektu se naimportují bez ztráty a součty
-sedí s výstupem `dotnet test`.
+**Brána G2:** všechny reporty ze vzorového .NET projektu se naimportují bez ztráty a počet
+výsledků sedí s celkovým počtem uvedeným v reportu. Součet z konzole `dotnet test` nestačí: u
+NUnit vynechává `Inconclusive` (6 vs. 7 testů), a TRX ho navíc zapisuje jako `NotExecuted`.
 
 ### F3 – Lokální běh a výsledky z CI
 

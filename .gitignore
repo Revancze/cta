@@ -45,3 +45,5 @@ output/
 .DS_Store
 Thumbs.db
 .claude/settings.local.json
+
+!tests/Cta.Tests/Samples/*.trx
