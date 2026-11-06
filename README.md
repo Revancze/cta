@@ -3,8 +3,8 @@
 [![CI](https://github.com/Revancze/cta/actions/workflows/ci.yml/badge.svg)](https://github.com/Revancze/cta/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**CTA** (working name) keeps a long-term history of xUnit and NUnit test results and answers
-the questions the last green build cannot:
+**CTA** (working name) keeps a long-term history of test results, starting with xUnit and NUnit,
+and answers the questions the last green build cannot:
 
 - When did this test start failing, and which commit broke it?
 - Which tests are flaky?

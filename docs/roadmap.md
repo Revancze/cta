@@ -4,7 +4,8 @@
 
 ## Cíl a principy
 
-CTA (pracovní název) dlouhodobě uchovává výsledky testů xUnit a NUnit a odpovídá na otázky,
+CTA (pracovní název) dlouhodobě uchovává výsledky testů, na začátku hlavně z xUnit a NUnit, a
+odpovídá na otázky,
 na které poslední zelený build neodpoví: kdy test začal padat, které testy jsou nestabilní
 (flaky), co zpomaluje sadu a jak se kvalita vyvíjí po commitech. Jde o štíhlou, offline
 náhradu Azure DevOps Test Analytics.
@@ -75,7 +76,8 @@ artefakt, který GitHub po době retence sám smaže. Data se do DB dostanou dv�
 
 **Lokální běh – `cta run`**
 
-1. Spustí `dotnet test` s TRX výstupem do dočasné složky.
+1. Spustí nastavený testovací příkaz (výchozí `dotnet test` s TRX výstupem) a report uloží do
+   dočasné složky.
 2. Report naimportuje do DB v jedné transakci.
 3. Po úspěšném importu XML smaže. Při chybě ho nechá a vypíše cestu.
 
@@ -169,13 +171,13 @@ při 10 000.
 ### F2 – Parsery
 
 - [ ] TRX (`dotnet test --logger trx`), základní formát
-- [ ] NUnit 3 XML
-- [ ] xUnit v2 XML; JUnit XML jako volitelný
+- [ ] xUnit v2 XML
+- [ ] JUnit XML, snapshot testy na reportech z více nástrojů (například pytest a CTest)
 - [ ] Detekce formátu podle obsahu, ne podle přípony
 - [ ] Normalizace stavů na výčet Passed / Failed / Error / Skipped / NotRun / Inconclusive
 - [ ] Stabilní identita testu: plné jméno + otisk parametrů (Theory/TestCase)
 - [ ] Otisk chyby: typ výjimky + normalizovaná zpráva (bez čísel, GUIDů, cest) + první rámec
-      stacku
+      stacku; když stack trace nepozná, jen typ a zpráva
 - [ ] Snapshot testy na sadě vzorových reportů, včetně poškozených a prázdných
 
 **Brána G2:** všechny reporty ze vzorového .NET projektu se naimportují bez ztráty a součty
@@ -185,11 +187,11 @@ sedí s výstupem `dotnet test`.
 
 - [ ] `cta init`: interaktivně nabídne umístění DB (mimo git), přidá ji do `.gitignore`, volby
       uloží do `cta.json`
-- [ ] `cta run`: `dotnet test` s TRX do dočasné složky → import → smazání XML (při chybě
-      ponechat)
+- [ ] `cta run`: nastavený testovací příkaz (výchozí `dotnet test` s TRX) do dočasné složky →
+      import → smazání XML (při chybě ponechat)
 - [ ] `cta import <soubor>`: ruční import existujícího reportu, volitelně `--delete`
-- [ ] Metadata runu: commit, větev, původ local / ci, OS, framework; lokálně z git, v CI
-      z proměnných Actions
+- [ ] Metadata runu: commit, větev, necommitnuté změny, původ local / ci, OS, framework; lokálně
+      z git, v CI z proměnných Actions
 - [ ] `cta pack`: TRX → komprimovaný soubor runu pro artefakt
 - [ ] Vzorový workflow: test → `cta pack` → `actions/upload-artifact`, jen ruční spouštěč
       (`workflow_dispatch`)
@@ -211,6 +213,8 @@ a opakovaný `cta pull` nic nezdvojí.
 - [ ] Seskupení selhání podle otisku chyby
 - [ ] Nejpomalejší testy a regrese doby běhu
 - [ ] `cta gate`: pravidla v `cta.json`, návratový kód pro CI
+- [ ] - [ ] Runy s necommitnutými změnami se ukazují v historii, ale nepočítají se jako důkaz o commitu
+- [ ] Rozhodnout, zda `cta gate` zůstane, nebo ho převezme verdikt Codelaxy (ADR-0008)
 
 **Brána G4:** na reálné historii najde flaky testy a commit prvního pádu, které sedí s ruční
 kontrolou.
@@ -264,6 +268,7 @@ CREATE TABLE Runs (
     Repository     TEXT,
     Branch         TEXT,
     CommitSha      TEXT NOT NULL,
+    WorkingTreeDirty INTEGER NOT NULL CHECK (WorkingTreeDirty IN (0, 1)),
     Os             TEXT,
     Framework      TEXT,                   -- net10.0 …
     Configuration  TEXT,                   -- Debug / Release
