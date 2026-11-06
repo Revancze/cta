@@ -6,7 +6,8 @@ publish/
 
 # IDE and user files
 .vs/
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .idea/
 *.user
 *.suo
