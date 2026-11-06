@@ -34,6 +34,9 @@ STATEMENT: Po zavření spojení nástroj nedrží databázový soubor otevřen�
 [[SECTION]]
 TITLE: Import
 
+[REQUIREMENT]
+UID: CTA-IMPORT-001
+TITLE: Import uloží run a nic neukládá dvakrát
 STATEMENT: Import uloží run včetně informace, zda běžel nad necommitnutými změnami, zdrojové reporty a výsledky. Stejný test a stejná chyba jsou v databázi napříč runy jen jednou.
 
 [REQUIREMENT]
