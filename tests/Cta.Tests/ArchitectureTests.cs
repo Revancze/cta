@@ -2,6 +2,7 @@ using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.Loader;
 using ArchUnitNET.xUnit;
+using Cta.Tests.Storage;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace Cta.Tests;
@@ -10,31 +11,31 @@ public class ArchitectureTests
 {
     private static readonly Architecture Model = new ArchLoader()
         .LoadAssemblies(
-            typeof(Contracts.AssemblyMarker).Assembly,
-            typeof(Core.AssemblyMarker).Assembly,
-            typeof(Storage.AssemblyMarker).Assembly,
-            typeof(Cli.AssemblyMarker).Assembly
+            typeof(Cta.Contracts.AssemblyMarker).Assembly,
+            typeof(Cta.Core.AssemblyMarker).Assembly,
+            typeof(Cta.Storage.AssemblyMarker).Assembly,
+            typeof(Cta.Cli.AssemblyMarker).Assembly
         )
         .Build();
 
     private static readonly IObjectProvider<IType> Contracts = Types()
         .That()
-        .ResideInAssembly(typeof(Contracts.AssemblyMarker).Assembly)
+        .ResideInAssembly(typeof(Cta.Contracts.AssemblyMarker).Assembly)
         .As("Cta.Contracts");
 
     private static readonly IObjectProvider<IType> Core = Types()
         .That()
-        .ResideInAssembly(typeof(Core.AssemblyMarker).Assembly)
+        .ResideInAssembly(typeof(Cta.Core.AssemblyMarker).Assembly)
         .As("Cta.Core");
 
     private static readonly IObjectProvider<IType> Storage = Types()
         .That()
-        .ResideInAssembly(typeof(Storage.AssemblyMarker).Assembly)
+        .ResideInAssembly(typeof(Cta.Storage.AssemblyMarker).Assembly)
         .As("Cta.Storage");
 
     private static readonly IObjectProvider<IType> Cli = Types()
         .That()
-        .ResideInAssembly(typeof(Cli.AssemblyMarker).Assembly)
+        .ResideInAssembly(typeof(Cta.Cli.AssemblyMarker).Assembly)
         .As("Cta.Cli");
 
     // @relation(CTA-ARCH-001, scope=range_start)

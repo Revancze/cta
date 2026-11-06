@@ -12,5 +12,6 @@
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
     <PackageVersion Include="TngTech.ArchUnitNET.xUnit" Version="0.13.5" />
     <PackageVersion Include="Allure.Xunit" Version="2.15.0" />
+    <PackageVersion Include="Microsoft.Data.Sqlite" Version="10.0.14" />
   </ItemGroup>
 </Project>

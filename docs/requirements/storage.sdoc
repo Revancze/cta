@@ -1,0 +1,32 @@
+[DOCUMENT]
+TITLE: CTA – úložiště
+
+[[SECTION]]
+TITLE: Databáze
+
+[REQUIREMENT]
+UID: CTA-DB-001
+TITLE: Databáze se vytvoří a udržuje v aktuálním schématu
+STATEMENT: Při otevření se chybějící databáze vytvoří a chybějící migrace se aplikují. Verze schématu je uložená v PRAGMA user_version a opakované otevření ji nemění.
+
+[REQUIREMENT]
+UID: CTA-DB-002
+TITLE: Cizí klíče se kontrolují vždy
+STATEMENT: Každé spojení otevřené nástrojem má zapnuté foreign_keys, takže zápis porušující cizí klíč selže.
+
+[REQUIREMENT]
+UID: CTA-DB-003
+TITLE: Databáze používá WAL
+STATEMENT: Databáze běží v režimu journal_mode = WAL.
+
+[REQUIREMENT]
+UID: CTA-DB-004
+TITLE: Novější databáze se neotevře
+STATEMENT: Databázi se schématem novějším, než nástroj zná, nástroj odmítne otevřít a nic v ní nezmění.
+
+[REQUIREMENT]
+UID: CTA-DB-005
+TITLE: Zavřené spojení uvolní soubor
+STATEMENT: Po zavření spojení nástroj nedrží databázový soubor otevřený, takže ho lze přesunout nebo smazat i na Windows.
+
+[[/SECTION]]
