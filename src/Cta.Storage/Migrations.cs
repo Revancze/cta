@@ -49,6 +49,7 @@ internal static class Migrations
                 Outcome        TEXT NOT NULL CHECK (Outcome IN
                                ('Passed', 'Failed', 'Error', 'Skipped', 'NotRun', 'Inconclusive')),
                 DurationMs     INTEGER NOT NULL,
+                Occurrences    INTEGER NOT NULL DEFAULT 1,
                 FailureId      INTEGER REFERENCES Failures(FailureId),
                 Output         TEXT,
                 PRIMARY KEY (RunId, TestCaseId)

@@ -70,3 +70,13 @@ TITLE: Klíč runu určuje jeho původ
 STATEMENT: RunKey má tvar local/<počítač>/<čas UTC> pro lokální běh a ci/<workflow run id>/<attempt>/<job> pro běh v CI.
 
 [[/SECTION]]
+
+[[SECTION]]
+TITLE: Stejné jméno testu v jednom runu
+
+[REQUIREMENT]
+UID: CTA-IMPORT-005
+TITLE: Stejná jména se sloučí a pád se neschová
+STATEMENT: Výsledky se stejným plným jménem v jednom runu se uloží jako jeden řádek. Uloží se počet výskytů a součet doby běhu a vyhraje horší výsledek bez ohledu na pořadí. Součet výskytů odpovídá počtu výsledků v reportu.
+
+[[/SECTION]]

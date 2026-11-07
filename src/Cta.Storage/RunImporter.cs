@@ -205,7 +205,23 @@ public static class RunImporter
                 transaction,
                 """
                 INSERT INTO Results (RunId, TestCaseId, Outcome, DurationMs, FailureId, Output)
-                VALUES ($runId, $testCaseId, $outcome, $durationMs, $failureId, $output);
+                VALUES ($runId, $testCaseId, $outcome, $durationMs, $failureId, $output)
+                ON CONFLICT (RunId, TestCaseId) DO UPDATE SET
+                    Occurrences = Occurrences + 1,
+                    DurationMs = DurationMs + excluded.DurationMs,
+                    FailureId = CASE
+                        WHEN instr('NotRun Skipped Passed Inconclusive Failed Error', excluded.Outcome)
+                           > instr('NotRun Skipped Passed Inconclusive Failed Error', Outcome)
+                        THEN coalesce(excluded.FailureId, FailureId)
+                        ELSE coalesce(FailureId, excluded.FailureId)
+                    END,
+                    Outcome = CASE
+                        WHEN instr('NotRun Skipped Passed Inconclusive Failed Error', excluded.Outcome)
+                           > instr('NotRun Skipped Passed Inconclusive Failed Error', Outcome)
+                        THEN excluded.Outcome
+                        ELSE Outcome
+                    END,
+                    Output = coalesce(Output, excluded.Output);
                 """,
                 "$runId",
                 "$testCaseId",

@@ -175,7 +175,7 @@ při 10 000.
 - [ ] JUnit XML, snapshot testy na reportech z více nástrojů (například pytest a CTest)
 - [ ] Detekce formátu podle obsahu, ne podle přípony
 - [ ] Normalizace stavů na výčet Passed / Failed / Error / Skipped / NotRun / Inconclusive
-- [ ] Stabilní identita testu: plné jméno + otisk parametrů (Theory/TestCase)
+- [x] Stabilní identita testu: plné jméno; stejná jména v jednom runu se sloučí (ADR-0010)
 - [x] Otisk chyby: typ výjimky + normalizovaná zpráva (bez čísel, GUIDů, cest) + první rámec
       stacku; když stack trace nepozná, jen typ a zpráva
 - [ ] Snapshot testy na sadě vzorových reportů, včetně poškozených a prázdných
@@ -278,7 +278,7 @@ CREATE TABLE Runs (
 
 CREATE TABLE TestCases (
     TestCaseId     INTEGER PRIMARY KEY,
-    FullName       TEXT NOT NULL UNIQUE,   -- Namespace.Class.Method(paramHash)
+        FullName       TEXT NOT NULL UNIQUE,   -- Namespace.Class.Method(parametry)Namespace.Class.Method(paramHash)
     Assembly       TEXT,
     ClassName      TEXT,
     MethodName     TEXT,
@@ -300,6 +300,7 @@ CREATE TABLE Results (
     Outcome        TEXT NOT NULL CHECK (Outcome IN
                    ('Passed','Failed','Error','Skipped','NotRun','Inconclusive')),
     DurationMs     INTEGER NOT NULL,
+    Occurrences    INTEGER NOT NULL DEFAULT 1,  -- výskyty stejného jména v runu
     FailureId      INTEGER REFERENCES Failures(FailureId),
     Output         TEXT,                   -- stdout/stderr testu
     PRIMARY KEY (RunId, TestCaseId)

@@ -16,3 +16,4 @@ když se rozhodnutí změní, vznikne nový ADR a starý dostane stav `Nahrazeno
 | [0007](0007-runtime-frugality.md) | Šetrnost za běhu | Přijato |
 | [0008](0008-codelaxy-boundary.md) | Hranice mezi CTA a Codelaxy | Přijato |
 | [0009](0009-language-independent-results.md) | Výsledky testů nezávislé na jazyku | Přijato |
+| [0010](0010-same-test-name-in-one-run.md) | Stejné jméno testu v jednom runu | Přijato |
