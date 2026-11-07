@@ -125,8 +125,6 @@ public sealed class TrxReport
         }
     }
 
-    private const string TrxNamespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010";
-
     private static void ReadDefinition(
         XmlReader reader,
         Dictionary<Guid, string> classNames,

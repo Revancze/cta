@@ -11,6 +11,8 @@ namespace Cta.Core;
 /// </summary>
 internal static partial class ReportParsing
 {
+    public const string TrxNamespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010";
+
     private static readonly SearchValues<char> ParameterStart = SearchValues.Create("([");
 
     /// <summary>No DTD and no external resources, so a report cannot make the parser fetch or
