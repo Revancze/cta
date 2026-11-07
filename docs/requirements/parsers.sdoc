@@ -37,6 +37,6 @@ STATEMENT: Parser přečte JUnit XML z pytestu, CTestu a JunitXml.TestLoggeru v�
 [REQUIREMENT]
 UID: CTA-PARSE-006
 TITLE: Neúplný JUnit report se odmítne
-STATEMENT: Report s jiným kořenem, s počtem testů, který nesedí s atributem tests, se sadou bez atributu tests, s neplatným počtem nebo neplatnou dobou běhu parser odmítne.
+STATEMENT: Report s jiným kořenem, s počtem testů, který nesedí s atributem tests, se sadou bez atributu tests, s počtem selhání, chyb, přeskočených nebo vypnutých testů, který nesedí s tím, co report uvádí, s neplatným počtem nebo neplatnou dobou běhu parser odmítne. Počet, který nástroj neuvádí, se nekontroluje.
 
 [[/SECTION]]

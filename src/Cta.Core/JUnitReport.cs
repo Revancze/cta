@@ -50,8 +50,9 @@ public sealed partial class JUnitReport
     }
 
     /// <summary>
-    /// Reads test cases one by one. Throws when their number differs from what the suites
-    /// declare, so an incomplete report can never pass as a complete one.
+    /// Reads test cases one by one. Throws when the number of tests, failures, errors, skipped
+    /// or disabled tests differs from what the report declares, so an incomplete report can
+    /// never pass as a complete one.
     /// </summary>
     public IEnumerable<TestResult> ReadResults()
     {
@@ -61,9 +62,9 @@ public sealed partial class JUnitReport
         // Suites may be nested, and each one counts its nested suites too, so only the top
         // level is summed.
         var topLevel = reader.LocalName == "testsuite" ? 0 : 1;
-        var declaredByRoot = topLevel == 1 ? OptionalCount(reader) : null;
-        var declaredBySuites = 0;
-        var count = 0;
+        var declaredByRoot = topLevel == 1 ? Counts.Read(reader) : Counts.Unknown;
+        var declaredBySuites = Counts.Zero;
+        var actual = Counts.Zero;
 
         while (!reader.EOF)
         {
@@ -72,15 +73,20 @@ public sealed partial class JUnitReport
                 switch (reader.LocalName)
                 {
                     case "testsuite" when reader.Depth == topLevel:
-                        declaredBySuites +=
-                            OptionalCount(reader)
-                            ?? throw new InvalidDataException(
+                        var suite = Counts.Read(reader);
+                        if (suite.Tests is null)
+                        {
+                            throw new InvalidDataException(
                                 "JUnit XML suite does not declare its number of tests."
                             );
+                        }
+
+                        declaredBySuites = declaredBySuites.Plus(suite);
                         break;
                     case "testcase":
-                        yield return ReadTestCase(reader);
-                        count++;
+                        var result = ReadTestCase(reader);
+                        actual = actual.Plus(Counts.Of(result.Outcome));
+                        yield return result;
                         continue;
                     case "system-out" or "system-err":
                         // Output of a whole suite belongs to no single test.
@@ -92,11 +98,8 @@ public sealed partial class JUnitReport
             reader.Read();
         }
 
-        EnsureCount(declaredBySuites, count, "its suites");
-        if (declaredByRoot is { } declared)
-        {
-            EnsureCount(declared, count, "<testsuites>");
-        }
+        declaredBySuites.EnsureMatches(actual, "its suites");
+        declaredByRoot.EnsureMatches(actual, "<testsuites>");
     }
 
     private static TestResult ReadTestCase(XmlReader reader)
@@ -214,26 +217,89 @@ public sealed partial class JUnitReport
         return TimeSpan.FromSeconds(seconds);
     }
 
-    private static int? OptionalCount(XmlReader reader)
+    /// <summary>
+    /// Numbers of tests by outcome. A number the tool does not write stays null and is not
+    /// checked, so a missing attribute never pretends to be zero.
+    /// </summary>
+    private readonly record struct Counts(
+        int? Tests,
+        int? Failures,
+        int? Errors,
+        int? Skipped,
+        int? Disabled
+    )
     {
-        var text = reader.GetAttribute("tests");
-        if (text is null)
+        public static Counts Zero { get; } = new(0, 0, 0, 0, 0);
+
+        public static Counts Unknown { get; } = new(null, null, null, null, null);
+
+        public static Counts Read(XmlReader reader) =>
+            new(
+                Number(reader, "tests"),
+                Number(reader, "failures"),
+                Number(reader, "errors"),
+                Number(reader, "skipped"),
+                Number(reader, "disabled")
+            );
+
+        public static Counts Of(TestOutcome outcome) =>
+            new(
+                1,
+                outcome == TestOutcome.Failed ? 1 : 0,
+                outcome == TestOutcome.Error ? 1 : 0,
+                outcome == TestOutcome.Skipped ? 1 : 0,
+                outcome == TestOutcome.NotRun ? 1 : 0
+            );
+
+        public Counts Plus(Counts other) =>
+            new(
+                Add(Tests, other.Tests),
+                Add(Failures, other.Failures),
+                Add(Errors, other.Errors),
+                Add(Skipped, other.Skipped),
+                Add(Disabled, other.Disabled)
+            );
+
+        public void EnsureMatches(Counts actual, string source)
         {
-            return null;
+            Ensure(Tests, actual.Tests, "tests", source);
+            Ensure(Failures, actual.Failures, "failures", source);
+            Ensure(Errors, actual.Errors, "errors", source);
+            Ensure(Skipped, actual.Skipped, "skipped", source);
+            Ensure(Disabled, actual.Disabled, "disabled", source);
         }
 
-        return int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var value)
-            ? value
-            : throw new InvalidDataException($"JUnit XML has invalid number of tests '{text}'.");
-    }
+        /// <summary>One suite without the number makes the whole sum unknown.</summary>
+        private static int? Add(int? left, int? right) => left + right;
 
-    private static void EnsureCount(int declared, int count, string source)
-    {
-        if (declared != count)
+        private static void Ensure(int? declared, int? actual, string name, string source)
         {
-            throw new InvalidDataException(
-                $"JUnit XML report declares {declared} tests in {source} but contains {count}."
-            );
+            if (declared is not null && declared != actual)
+            {
+                throw new InvalidDataException(
+                    $"JUnit XML report declares {declared} {name} in {source} but contains {actual}."
+                );
+            }
+        }
+
+        private static int? Number(XmlReader reader, string attribute)
+        {
+            var text = reader.GetAttribute(attribute);
+            if (text is null)
+            {
+                return null;
+            }
+
+            return int.TryParse(
+                text,
+                NumberStyles.None,
+                CultureInfo.InvariantCulture,
+                out var value
+            )
+                ? value
+                : throw new InvalidDataException(
+                    $"JUnit XML has invalid number of {attribute} '{text}'."
+                );
         }
     }
 

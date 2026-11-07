@@ -20,6 +20,8 @@ a JunitXml.TestLoggeru, ne domnělou specifikací:
 - Čas startu se převezme, jen když uvádí časovou zónu.
 - Počet testů se kontroluje proti atributu `tests` na nejvyšší úrovni sad (vnořené sady by
   se jinak započítaly dvakrát) a proti `tests` na `<testsuites>`, pokud ho report uvádí.
+- Kontrolují se i `failures`, `errors`, `skipped` a `disabled`, ale jen když je nástroj uvádí.
+  NotRun se porovnává s `disabled`, ne se `skipped`.
 
 ## Důsledky
 

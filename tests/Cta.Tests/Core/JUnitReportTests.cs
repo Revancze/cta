@@ -194,6 +194,10 @@ public sealed class JUnitReportTests : IDisposable
     [InlineData(
         """<testsuites tests="3"><testsuite tests="1"><testcase name="a" /></testsuite></testsuites>"""
     )]
+    [InlineData(
+        """<testsuites failures="2"><testsuite tests="1"><testcase name="a"><failure /></testcase></testsuite></testsuites>"""
+    )]
+    [InlineData("""<testsuite tests="1" errors="-1"><testcase name="a" /></testsuite>""")]
     [InlineData("""<testsuites><testsuite><testcase name="a" /></testsuite></testsuites>""")]
     [InlineData("""<testsuite tests="many"><testcase name="a" /></testsuite>""")]
     [InlineData("""<testsuite tests="1"><testcase name="a" time="1,5" /></testsuite>""")]
@@ -203,6 +207,43 @@ public sealed class JUnitReportTests : IDisposable
         var report = JUnitReport.Open(Write(xml));
 
         Assert.Throws<InvalidDataException>(() => report.ReadResults().ToList());
+    }
+
+    [Theory]
+    [InlineData("failures", "<failure />")]
+    [InlineData("errors", "<error />")]
+    [InlineData("skipped", "<skipped />")]
+    [InlineData("disabled", "")]
+    public void Declared_number_by_outcome_is_checked(string attribute, string problem)
+    {
+        var disabled = attribute == "disabled" ? """ status="disabled" """ : " ";
+        var matching = Write(
+            $"""<testsuite tests="1" {attribute}="1"><testcase name="a"{disabled}>{problem}</testcase></testsuite>""",
+            "matching.xml"
+        );
+        var lying = Write(
+            $"""<testsuite tests="1" {attribute}="0"><testcase name="a"{disabled}>{problem}</testcase></testsuite>""",
+            "lying.xml"
+        );
+
+        Assert.Single(JUnitReport.Open(matching).ReadResults());
+        Assert.Throws<InvalidDataException>(() => JUnitReport.Open(lying).ReadResults().ToList());
+    }
+
+    [Fact]
+    public void Number_the_tool_does_not_write_is_not_checked()
+    {
+        // The second suite does not say how many tests failed, so the sum is unknown.
+        var path = Write(
+            """
+            <testsuites>
+              <testsuite tests="1" failures="0"><testcase name="a" /></testsuite>
+              <testsuite tests="1"><testcase name="b"><failure /></testcase></testsuite>
+            </testsuites>
+            """
+        );
+
+        Assert.Equal(2, JUnitReport.Open(path).ReadResults().Count());
     }
 
     [Fact]
@@ -221,9 +262,9 @@ public sealed class JUnitReportTests : IDisposable
     private static string SamplePath(string sample) =>
         Path.Combine(AppContext.BaseDirectory, "Samples", sample);
 
-    private string Write(string xml)
+    private string Write(string xml, string fileName = "report.xml")
     {
-        var path = Path.Combine(_directory, "report.xml");
+        var path = Path.Combine(_directory, fileName);
         File.WriteAllText(path, xml);
         return path;
     }
