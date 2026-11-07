@@ -196,8 +196,8 @@ NUnit vynechává `Inconclusive` (6 vs. 7 testů), a TRX ho navíc zapisuje jako
 - [ ] `cta run`: nastavený testovací příkaz (výchozí `dotnet test` s TRX) do dočasné složky →
       import → smazání XML (při chybě ponechat)
 - [ ] `cta import <soubor>`: ruční import existujícího reportu, volitelně `--delete`
-- [ ] Metadata runu: commit, větev, necommitnuté změny, původ local / ci, OS, framework; lokálně, částečný běh (filtr testů; `--partial` u `cta import`)
-      z git, v CI z proměnných Actions
+- [ ] Metadata runu: commit, větev, necommitnuté změny, původ local / ci, OS, framework, částečný
+      běh (filtr testů; `--partial` u `cta import`); lokálně z git, v CI z proměnných Actions
 - [ ] `cta pack`: TRX → komprimovaný soubor runu pro artefakt
 - [ ] Vzorový workflow: test → `cta pack` → `actions/upload-artifact`, jen ruční spouštěč
       (`workflow_dispatch`)
@@ -211,7 +211,8 @@ a opakovaný `cta pull` nic nezdvojí.
 ### F4 – Analýzy
 
 - [ ] Historie testu: posledních N výsledků, commit, kdy se test objevil
-- [ ] Proč spadl: poslední zelený a první červený commit mezi dostupnými úplnými runy, …
+- [ ] Proč spadl: poslední zelený a první červený commit mezi dostupnými úplnými runy, počet
+      commitů mezi nimi, seznam změněných souborů z lokálního git a chybová zpráva se stack trace
 - [ ] Test chybějící v částečném runu je „nevíme“, ne zmizelý ani selhaný
 - [ ] Podezření na problém prostředí (chybějící DLL, modul, program) označit, výsledek ponechat
 - [ ] Nové a zmizelé testy mezi dvěma commity nebo runy
