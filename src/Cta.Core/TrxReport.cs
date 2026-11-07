@@ -1,7 +1,7 @@
 using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Xml;
 using Cta.Contracts;
+using static Cta.Core.ReportParsing;
 
 namespace Cta.Core;
 
@@ -10,7 +10,7 @@ namespace Cta.Core;
 /// twice: once for definitions and totals, then once more while results are enumerated. Only
 /// test ids and shared class names stay in memory, never messages or output (ADR-0007).
 /// </summary>
-public sealed partial class TrxReport
+public sealed class TrxReport
 {
     private readonly string _path;
     private readonly Dictionary<Guid, string> _classNames;
@@ -127,18 +127,6 @@ public sealed partial class TrxReport
 
     private const string TrxNamespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010";
 
-    private static XmlReader CreateReader(string path) =>
-        XmlReader.Create(
-            path,
-            new XmlReaderSettings
-            {
-                DtdProcessing = DtdProcessing.Prohibit,
-                XmlResolver = null,
-                IgnoreWhitespace = true,
-                IgnoreComments = true,
-            }
-        );
-
     private static void ReadDefinition(
         XmlReader reader,
         Dictionary<Guid, string> classNames,
@@ -209,59 +197,15 @@ public sealed partial class TrxReport
 
         return new TestResult
         {
-            TestCase = ToTestCase(testName, className),
+            TestCase = CreateTestCase(testName, className),
             Outcome = outcome,
             Duration = duration,
-            Failure = ToFailure(message, stackTrace),
+            // TRX uses ErrorInfo also for the reason of a skipped test, so it is kept for every
+            // outcome.
+            Failure = CreateFailure(declaredType: null, message, stackTrace),
             Output = JoinOutput(stdOut, stdErr),
         };
     }
-
-    private static TestCase ToTestCase(string testName, string? className)
-    {
-        // xUnit writes the full name into testName, NUnit only the method.
-        var fullName =
-            className is null || testName.StartsWith(className + ".", StringComparison.Ordinal)
-                ? testName
-                : $"{className}.{testName}";
-        var localName = className is null ? testName : fullName[(className.Length + 1)..];
-        var parameters = localName.IndexOf('(', StringComparison.Ordinal);
-
-        return new TestCase
-        {
-            FullName = fullName,
-            ClassName = className,
-            MethodName = parameters < 0 ? localName : localName[..parameters],
-        };
-    }
-
-    /// <summary>
-    /// TRX uses ErrorInfo also for the reason of a skipped test, so it is kept for every outcome.
-    /// </summary>
-    private static Failure? ToFailure(string? message, string? stackTrace)
-    {
-        if (message is null && stackTrace is null)
-        {
-            return null;
-        }
-
-        var match = message is null ? Match.Empty : ExceptionPattern().Match(message);
-        var exceptionType = match.Success ? match.Groups[1].Value : null;
-        var text = match.Success ? message![match.Length..] : message;
-
-        return new Failure
-        {
-            Signature = FailureSignature.Create(exceptionType, text, stackTrace),
-            ExceptionType = exceptionType,
-            Message = message,
-            StackTrace = stackTrace,
-        };
-    }
-
-    private static string? JoinOutput(string? stdOut, string? stdErr) =>
-        stdOut is null ? stdErr
-        : stdErr is null ? stdOut
-        : $"{stdOut}\n{stdErr}";
 
     private static TestOutcome ToOutcome(string outcome) =>
         outcome switch
@@ -280,13 +224,4 @@ public sealed partial class TrxReport
         var text = reader.GetAttribute(attribute);
         return text is null ? null : DateTimeOffset.Parse(text, CultureInfo.InvariantCulture);
     }
-
-    private static string Required(XmlReader reader, string attribute) =>
-        reader.GetAttribute(attribute)
-        ?? throw new InvalidDataException(
-            $"Element <{reader.LocalName}> has no attribute '{attribute}'."
-        );
-
-    [GeneratedRegex(@"^([A-Za-z_][\w.`]*(?:Exception|Error))\s*:\s*")]
-    private static partial Regex ExceptionPattern();
 }

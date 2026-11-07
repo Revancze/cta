@@ -1,0 +1,100 @@
+<testsuites>
+  <testsuite
+    name="SampleXunit.dll"
+    tests="10"
+    skipped="1"
+    failures="3"
+    errors="0"
+    time="0.29504749999999996"
+    timestamp="2026-11-07T10:30:34"
+    hostname="machine"
+    id="0"
+    package="SampleXunit.dll"
+  >
+    <properties />
+    <testcase classname="Sample.Tests.CalculatorTests" name="Param(x: 2)" time="0.1417570" />
+    <testcase
+      classname="Sample.Tests.DuplicateNames"
+      name="SameDisplay(value: same)"
+      time="0.1418093"
+    />
+    <testcase classname="Sample.Tests.CalculatorTests" name="Param(x: 1)" time="0.0004267" />
+    <testcase classname="Sample.Tests.CalculatorTests" name="Passes" time="0.0008681">
+      <system-out>hello output
+
+</system-out>
+    </testcase>
+    <testcase classname="Sample.Tests.CalculatorTests" name="Fails" time="0.0061992">
+      <failure
+        type="failure"
+        message="Assert.Equal() Failure: Values differ&#xD;&#xA;Expected: 1&#xD;&#xA;Actual:   2"
+        >at Sample.Tests.CalculatorTests.Fails() in C:\work\sample\Tests.cs:line 6
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</failure>
+    </testcase>
+    <testcase
+      classname="Sample.Tests.DuplicateNames"
+      name="SameDisplay(value: same)"
+      time="0.0022546"
+    >
+      <failure
+        type="failure"
+        message="Assert.True() Failure&#xD;&#xA;Expected: True&#xD;&#xA;Actual:   False"
+        >at Sample.Tests.DuplicateNames.SameDisplay(Opaque value) in C:\work\sample\Dup.cs:line 13
+   at InvokeStub_DuplicateNames.SameDisplay(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</failure>
+    </testcase>
+    <testcase classname="Sample.Tests.CalculatorTests" name="Skipped" time="0.0010000">
+      <skipped />
+    </testcase>
+    <testcase
+      classname="Sample.Tests.DuplicateNames"
+      name="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)"
+      time="0.0002064"
+    />
+    <testcase classname="Sample.Tests.CalculatorTests" name="Throws" time="0.0002491">
+      <failure type="failure" message="System.InvalidOperationException : boom &lt;&amp;&gt; 42"
+        >at Sample.Tests.CalculatorTests.Throws() in C:\work\sample\Tests.cs:line 9
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</failure>
+    </testcase>
+    <testcase
+      classname="Sample.Tests.DuplicateNames"
+      name="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)"
+      time="0.0002771"
+    />
+    <system-out>
+Test Framework Informational Messages:
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.13)
+[xUnit.net 00:00:08.72]   Discovering: SampleXunit
+[xUnit.net 00:00:08.79]   Discovered:  SampleXunit
+[xUnit.net 00:00:08.89]   Starting:    SampleXunit
+[xUnit.net 00:00:09.12]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:09.12]       Expected: 1
+[xUnit.net 00:00:09.12]       Actual:   2
+[xUnit.net 00:00:09.12]       Stack Trace:
+[xUnit.net 00:00:09.12]         C:\work\sample\Tests.cs(6,0): at Sample.Tests.CalculatorTests.Fails()
+[xUnit.net 00:00:09.12]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:09.12]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:09.12]       Assert.True() Failure
+[xUnit.net 00:00:09.12]       Expected: True
+[xUnit.net 00:00:09.12]       Actual:   False
+[xUnit.net 00:00:09.12]       Stack Trace:
+[xUnit.net 00:00:09.12]         C:\work\sample\Dup.cs(13,0): at Sample.Tests.DuplicateNames.SameDisplay(Opaque value)
+[xUnit.net 00:00:09.12]            at InvokeStub_DuplicateNames.SameDisplay(Object, Span`1)
+[xUnit.net 00:00:09.12]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:09.12]       not today
+[xUnit.net 00:00:09.13]       System.InvalidOperationException : boom &lt;&amp;&gt; 42
+[xUnit.net 00:00:09.13]       Stack Trace:
+[xUnit.net 00:00:09.13]         C:\work\sample\Tests.cs(9,0): at Sample.Tests.CalculatorTests.Throws()
+[xUnit.net 00:00:09.13]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:09.13]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:09.14]   Finished:    SampleXunit
+</system-out>
+    <system-err>Error - [xUnit.net 00:00:09.12]     Sample.Tests.CalculatorTests.Fails [FAIL]
+Error - [xUnit.net 00:00:09.12]     Sample.Tests.DuplicateNames.SameDisplay(value: same) [FAIL]
+Warning - [xUnit.net 00:00:09.12]     Sample.Tests.CalculatorTests.Skipped [SKIP]
+Error - [xUnit.net 00:00:09.13]     Sample.Tests.CalculatorTests.Throws [FAIL]
+</system-err>
+  </testsuite>
+</testsuites>

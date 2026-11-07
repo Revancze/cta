@@ -25,3 +25,18 @@ TITLE: Parser čte proudově
 STATEMENT: Špička živé paměti nezávisí na velikosti výstupů testů a při 100 000 výsledcích nepřekročí 32 MB. V paměti zůstávají jen identifikátory testů a sdílené názvy tříd.
 
 [[/SECTION]]
+
+[[SECTION]]
+TITLE: JUnit XML
+
+[REQUIREMENT]
+UID: CTA-PARSE-005
+TITLE: JUnit XML se přečte úplně
+STATEMENT: Parser přečte JUnit XML z pytestu, CTestu a JunitXml.TestLoggeru včetně celého jména testu, výsledku, doby běhu, chyby, důvodu přeskočení a výstupu. Vypnutý test se nikdy nevydává za úspěšný. Čas startu se převezme, jen když report uvádí časovou zónu.
+
+[REQUIREMENT]
+UID: CTA-PARSE-006
+TITLE: Neúplný JUnit report se odmítne
+STATEMENT: Report s jiným kořenem, s počtem testů, který nesedí s atributem tests, se sadou bez atributu tests, s neplatným počtem nebo neplatnou dobou běhu parser odmítne.
+
+[[/SECTION]]

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites name="pytest tests">
+  <testsuite
+    name="pytest"
+    errors="2"
+    failures="3"
+    skipped="2"
+    tests="13"
+    time="0.208"
+    timestamp="2026-11-07T11:31:46.346630+01:00"
+    hostname="machine"
+  >
+    <testcase classname="tests.test_sample" name="test_passes" time="0.002">
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+hello from stdout
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+hello from stderr
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_fails" time="0.001">
+      <failure message="AssertionError: math is broken&#10;assert (1 + 1) == 3"
+        >def test_fails():
+&gt;       assert 1 + 1 == 3, "math is broken"
+E       AssertionError: math is broken
+E       assert (1 + 1) == 3
+
+tests\test_sample.py:11: AssertionError</failure>
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_raises" time="0.000">
+      <failure message="ValueError: Žluťoučký kůň &lt;úpěl&gt; &amp; &quot;ďábelské&quot; ódy"
+        >def test_raises():
+&gt;       raise ValueError("Žluťoučký kůň &lt;úpěl&gt; &amp; \"ďábelské\" ódy")
+E       ValueError: Žluťoučký kůň &lt;úpěl&gt; &amp; "ďábelské" ódy
+
+tests\test_sample.py:15: ValueError</failure>
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_setup_error" time="0.000">
+      <error message="failed on setup with &quot;RuntimeError: fixture exploded&quot;"
+        >@pytest.fixture
+    def broken():
+&gt;       raise RuntimeError("fixture exploded")
+E       RuntimeError: fixture exploded
+
+tests\test_sample.py:20: RuntimeError</error>
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_teardown_error" time="0.000">
+      <error message="failed on teardown with &quot;RuntimeError: teardown exploded&quot;"
+        >@pytest.fixture
+    def teardown_breaks():
+        yield
+&gt;       raise RuntimeError("teardown exploded")
+E       RuntimeError: teardown exploded
+
+tests\test_sample.py:30: RuntimeError</error>
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_skipped" time="0.000">
+      <skipped type="pytest.skip" message="not on this machine"
+        >C:\work\sample\tests\test_sample.py:37: not on this machine</skipped>
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_xfail" time="0.000">
+      <skipped type="pytest.xfail" message="known bug" />
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_xpass" time="0.000">
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_param[1]" time="0.001">
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_param[2]" time="0.000">
+      <failure message="assert 2 != 2"
+        >value = 2
+
+    @pytest.mark.parametrize("value", [1, 2, "same", "same"])
+    def test_param(value):
+&gt;       assert value != 2
+E       assert 2 != 2
+
+tests\test_sample.py:54: AssertionError</failure>
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_param[same0]" time="0.000">
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample" name="test_param[same1]" time="0.000">
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+    <testcase classname="tests.test_sample.TestGroup" name="test_in_class" time="0.000">
+      <system-out>--------------------------------- Captured Log ---------------------------------
+
+--------------------------------- Captured Out ---------------------------------
+
+</system-out>
+      <system-err>--------------------------------- Captured Err ---------------------------------
+
+</system-err>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -171,8 +171,11 @@ při 10 000.
 ### F2 – Parsery
 
 - [x] TRX (`dotnet test --logger trx`), základní formát: xUnit a NUnit; TRX z Microsoft.Testing.Platform zatím neověřený
-- [ ] xUnit v2 XML
-- [ ] JUnit XML, snapshot testy na reportech z více nástrojů (například pytest a CTest)
+- [ ] xUnit v2 XML; `dotnet test` ho sám nevytvoří, potřebuje `xunit.console` nebo logger
+      třetí strany
+- [ ] NUnit 3 XML (vrátí `Inconclusive`); `dotnet test` ho sám nevytvoří, potřebuje
+      `nunit3-console` nebo logger třetí strany
+- [x] JUnit XML, snapshot testy na reportech z více nástrojů (například pytest a CTest)
 - [ ] Detekce formátu podle obsahu, ne podle přípony
 - [ ] Normalizace stavů na výčet Passed / Failed / Error / Skipped / NotRun / Inconclusive
 - [x] Stabilní identita testu: plné jméno; stejná jména v jednom runu se sloučí (ADR-0010)
@@ -214,7 +217,7 @@ a opakovaný `cta pull` nic nezdvojí.
 - [ ] Seskupení selhání podle otisku chyby
 - [ ] Nejpomalejší testy a regrese doby běhu
 - [ ] `cta gate`: pravidla v `cta.json`, návratový kód pro CI
-- [ ] - [ ] Runy s necommitnutými změnami se ukazují v historii, ale nepočítají se jako důkaz o commitu
+- [ ] Runy s necommitnutými změnami se ukazují v historii, ale nepočítají se jako důkaz o commitu
 - [ ] Rozhodnout, zda `cta gate` zůstane, nebo ho převezme verdikt Codelaxy (ADR-0008)
 
 **Brána G4:** na reálné historii najde flaky testy a commit prvního pádu, které sedí s ruční
@@ -278,7 +281,7 @@ CREATE TABLE Runs (
 
 CREATE TABLE TestCases (
     TestCaseId     INTEGER PRIMARY KEY,
-        FullName       TEXT NOT NULL UNIQUE,   -- Namespace.Class.Method(parametry)Namespace.Class.Method(paramHash)
+    FullName       TEXT NOT NULL UNIQUE,   -- Namespace.Class.Method(parametry)
     Assembly       TEXT,
     ClassName      TEXT,
     MethodName     TEXT,
@@ -309,7 +312,7 @@ CREATE TABLE Results (
 CREATE TABLE Sources (                    -- záznam o smazaném XML
     RunId          INTEGER NOT NULL REFERENCES Runs(RunId) ON DELETE CASCADE,
     FileName       TEXT NOT NULL,
-    Format         TEXT NOT NULL,          -- trx / nunit3 / xunit2 / junit
+    Format         TEXT NOT NULL,          -- trx / nunit3 / xunit2 / junit 
     Sha256         TEXT NOT NULL,
     PRIMARY KEY (RunId, Sha256)
 );
