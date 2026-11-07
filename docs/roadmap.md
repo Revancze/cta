@@ -177,11 +177,13 @@ při 10 000.
       `nunit3-console` nebo logger třetí strany
 - [x] JUnit XML, snapshot testy na reportech z více nástrojů (například pytest a CTest)
 - [ ] Detekce formátu podle obsahu, ne podle přípony
-- [ ] Normalizace stavů na výčet Passed / Failed / Error / Skipped / NotRun / Inconclusive
+- [x] Normalizace stavů na výčet Passed / Failed / Error / Skipped / NotRun / Inconclusive
 - [x] Stabilní identita testu: plné jméno; stejná jména v jednom runu se sloučí (ADR-0010)
 - [x] Otisk chyby: typ výjimky + normalizovaná zpráva (bez čísel, GUIDů, cest) + první rámec
       stacku; když stack trace nepozná, jen typ a zpráva
 - [ ] Snapshot testy na sadě vzorových reportů, včetně poškozených a prázdných
+- [ ] `OutcomeDetail`: původní označení výsledku (Timeout, Aborted, Disconnected, xfail…),
+      jen když ho report uvádí; ověřit na reálném TRX s timeoutem
 
 **Brána G2:** všechny reporty ze vzorového .NET projektu se naimportují bez ztráty a počet
 výsledků sedí s celkovým počtem uvedeným v reportu. Součet z konzole `dotnet test` nestačí: u
@@ -194,7 +196,7 @@ NUnit vynechává `Inconclusive` (6 vs. 7 testů), a TRX ho navíc zapisuje jako
 - [ ] `cta run`: nastavený testovací příkaz (výchozí `dotnet test` s TRX) do dočasné složky →
       import → smazání XML (při chybě ponechat)
 - [ ] `cta import <soubor>`: ruční import existujícího reportu, volitelně `--delete`
-- [ ] Metadata runu: commit, větev, necommitnuté změny, původ local / ci, OS, framework; lokálně
+- [ ] Metadata runu: commit, větev, necommitnuté změny, původ local / ci, OS, framework; lokálně, částečný běh (filtr testů; `--partial` u `cta import`)
       z git, v CI z proměnných Actions
 - [ ] `cta pack`: TRX → komprimovaný soubor runu pro artefakt
 - [ ] Vzorový workflow: test → `cta pack` → `actions/upload-artifact`, jen ruční spouštěč
@@ -209,8 +211,9 @@ a opakovaný `cta pull` nic nezdvojí.
 ### F4 – Analýzy
 
 - [ ] Historie testu: posledních N výsledků, commit, kdy se test objevil
-- [ ] Proč spadl: poslední zelený a první červený commit, počet commitů mezi nimi, seznam
-      změněných souborů z lokálního git a chybová zpráva se stack trace
+- [ ] Proč spadl: poslední zelený a první červený commit mezi dostupnými úplnými runy, …
+- [ ] Test chybějící v částečném runu je „nevíme“, ne zmizelý ani selhaný
+- [ ] Podezření na problém prostředí (chybějící DLL, modul, program) označit, výsledek ponechat
 - [ ] Nové a zmizelé testy mezi dvěma commity nebo runy
 - [ ] Porovnání CI vs. lokální run
 - [ ] Flaky detekce: různé výsledky na stejném commitu, míra překlopení v okně posledních runů
