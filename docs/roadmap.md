@@ -173,7 +173,7 @@ při 10 000.
 - [x] TRX (`dotnet test --logger trx`), základní formát: xUnit a NUnit; TRX z Microsoft.Testing.Platform zatím neověřený
 - [ ] xUnit v2 XML; `dotnet test` ho sám nevytvoří, potřebuje `xunit.console` nebo logger
       třetí strany
-- [ ] NUnit 3 XML (vrátí `Inconclusive`); `dotnet test` ho sám nevytvoří, potřebuje
+- [x] NUnit 3 XML (vrátí `Inconclusive`); `dotnet test` ho sám nevytvoří, potřebuje
       `nunit3-console` nebo logger třetí strany
 - [x] JUnit XML, snapshot testy na reportech z více nástrojů (například pytest a CTest)
 - [x] Detekce formátu podle obsahu, ne podle přípony
