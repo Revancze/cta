@@ -176,7 +176,7 @@ při 10 000.
 - [ ] NUnit 3 XML (vrátí `Inconclusive`); `dotnet test` ho sám nevytvoří, potřebuje
       `nunit3-console` nebo logger třetí strany
 - [x] JUnit XML, snapshot testy na reportech z více nástrojů (například pytest a CTest)
-- [ ] Detekce formátu podle obsahu, ne podle přípony
+- [x] Detekce formátu podle obsahu, ne podle přípony
 - [x] Normalizace stavů na výčet Passed / Failed / Error / Skipped / NotRun / Inconclusive
 - [x] Stabilní identita testu: plné jméno; stejná jména v jednom runu se sloučí (ADR-0010)
 - [x] Otisk chyby: typ výjimky + normalizovaná zpráva (bez čísel, GUIDů, cest) + první rámec
