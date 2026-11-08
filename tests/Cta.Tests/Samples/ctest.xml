@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite
-  name="(empty)"
-  tests="7"
-  failures="2"
-  disabled="1"
-  skipped="2"
-  hostname=""
-  time="1"
-  timestamp="2026-11-07T11:30:06"
->
-  <testcase name="passes" classname="passes" time="0.0395694" status="run">
-    <properties />
-    <system-out>hello from ctest
+<testsuite name="(empty)"
+	tests="7"
+	failures="2"
+	disabled="1"
+	skipped="2"
+	hostname=""
+	time="1"
+	timestamp="2026-11-07T11:30:06"
+	>
+	<testcase name="passes" classname="passes" time="0.0395694" status="run">
+		<properties/>
+		<system-out>hello from ctest
 </system-out>
-  </testcase>
-  <testcase name="fails" classname="fails" time="0.0401497" status="fail">
-    <failure message="Failed" />
-    <properties />
-    <system-out></system-out>
-  </testcase>
-  <testcase name="missing_command" classname="missing_command" time="0" status="notrun">
-    <skipped message="Unable to find executable" />
-    <properties />
-    <system-out>Unable to find executable: does-not-exist-anywhere</system-out>
-  </testcase>
-  <testcase name="skipped" classname="skipped" time="0.0371146" status="notrun">
-    <skipped message="SKIP_REGULAR_EXPRESSION_MATCHED" />
-    <properties />
-    <system-out>SKIP me
+	</testcase>
+	<testcase name="fails" classname="fails" time="0.0401497" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="missing_command" classname="missing_command" time="0" status="notrun">
+		<skipped message="Unable to find executable"/>
+		<properties/>
+		<system-out>Unable to find executable: does-not-exist-anywhere</system-out>
+	</testcase>
+	<testcase name="skipped" classname="skipped" time="0.0371146" status="notrun">
+		<skipped message="SKIP_REGULAR_EXPRESSION_MATCHED"/>
+		<properties/>
+		<system-out>SKIP me
 </system-out>
-  </testcase>
-  <testcase name="disabled" classname="disabled" time="0" status="disabled">
-    <properties />
-    <system-out>Disabled</system-out>
-  </testcase>
-  <testcase name="timeout" classname="timeout" time="1.0233" status="fail">
-    <failure message="Timeout" />
-    <properties />
-    <system-out></system-out>
-  </testcase>
-  <testcase name="suite.with.dots" classname="suite.with.dots" time="0.0374641" status="run">
-    <properties />
-    <system-out>Žluťoučký &lt;kůň&gt; &amp; spol
+	</testcase>
+	<testcase name="disabled" classname="disabled" time="0" status="disabled">
+		<properties/>
+		<system-out>Disabled</system-out>
+	</testcase>
+	<testcase name="timeout" classname="timeout" time="1.0233" status="fail">
+		<failure message="Timeout"/>
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="suite.with.dots" classname="suite.with.dots" time="0.0374641" status="run">
+		<properties/>
+		<system-out>Žluťoučký &lt;kůň&gt; &amp; spol
 </system-out>
-  </testcase>
+	</testcase>
 </testsuite>

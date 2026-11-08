@@ -1,61 +1,20 @@
 <assemblies timestamp="11/07/2026 16:57:49">
-  <assembly
-    name="C:\work\sample\bin\Debug\net10.0\SampleXunit.dll"
-    run-date="2026-11-07"
-    run-time="16:57:49"
-    total="10"
-    passed="6"
-    failed="3"
-    skipped="1"
-    time="1.358"
-    errors="0"
-  >
+  <assembly name="C:\work\sample\bin\Debug\net10.0\SampleXunit.dll" run-date="2026-11-07" run-time="16:57:49" total="10" passed="6" failed="3" skipped="1" time="1.358" errors="0">
     <errors />
-    <collection
-      total="6"
-      passed="3"
-      failed="2"
-      skipped="1"
-      name="Test collection for Sample.Tests.CalculatorTests"
-      time="0.118"
-    >
-      <test
-        name="Sample.Tests.CalculatorTests.Param(x: 2)"
-        type="Sample.Tests.CalculatorTests"
-        method="Param(x: 2)"
-        time="0.1110077"
-        result="Pass"
-      >
+    <collection total="6" passed="3" failed="2" skipped="1" name="Test collection for Sample.Tests.CalculatorTests" time="0.118">
+      <test name="Sample.Tests.CalculatorTests.Param(x: 2)" type="Sample.Tests.CalculatorTests" method="Param(x: 2)" time="0.1110077" result="Pass">
         <traits />
       </test>
-      <test
-        name="Sample.Tests.CalculatorTests.Param(x: 1)"
-        type="Sample.Tests.CalculatorTests"
-        method="Param(x: 1)"
-        time="0.0003178"
-        result="Pass"
-      >
+      <test name="Sample.Tests.CalculatorTests.Param(x: 1)" type="Sample.Tests.CalculatorTests" method="Param(x: 1)" time="0.0003178" result="Pass">
         <traits />
       </test>
-      <test
-        name="Sample.Tests.CalculatorTests.Passes"
-        type="Sample.Tests.CalculatorTests"
-        method="Passes"
-        time="0.0006547"
-        result="Pass"
-      >
+      <test name="Sample.Tests.CalculatorTests.Passes" type="Sample.Tests.CalculatorTests" method="Passes" time="0.0006547" result="Pass">
         <output>hello output
 
 </output>
         <traits />
       </test>
-      <test
-        name="Sample.Tests.CalculatorTests.Fails"
-        type="Sample.Tests.CalculatorTests"
-        method="Fails"
-        time="0.0045429"
-        result="Fail"
-      >
+      <test name="Sample.Tests.CalculatorTests.Fails" type="Sample.Tests.CalculatorTests" method="Fails" time="0.0045429" result="Fail">
         <failure>
           <message>Assert.Equal() Failure: Values differ
 Expected: 1
@@ -66,22 +25,10 @@ Actual:   2</message>
         </failure>
         <traits />
       </test>
-      <test
-        name="Sample.Tests.CalculatorTests.Skipped"
-        type="Sample.Tests.CalculatorTests"
-        method="Skipped"
-        time="0.0010000"
-        result="Skip"
-      >
+      <test name="Sample.Tests.CalculatorTests.Skipped" type="Sample.Tests.CalculatorTests" method="Skipped" time="0.0010000" result="Skip">
         <traits />
       </test>
-      <test
-        name="Sample.Tests.CalculatorTests.Throws"
-        type="Sample.Tests.CalculatorTests"
-        method="Throws"
-        time="0.0002432"
-        result="Fail"
-      >
+      <test name="Sample.Tests.CalculatorTests.Throws" type="Sample.Tests.CalculatorTests" method="Throws" time="0.0002432" result="Fail">
         <failure>
           <message>System.InvalidOperationException : boom &lt;&amp;&gt; 42</message>
           <stack-trace>   at Sample.Tests.CalculatorTests.Throws() in C:\work\sample\Tests.cs:line 9
@@ -91,30 +38,11 @@ Actual:   2</message>
         <traits />
       </test>
     </collection>
-    <collection
-      total="4"
-      passed="3"
-      failed="1"
-      skipped="0"
-      name="Test collection for Sample.Tests.DuplicateNames"
-      time="0.113"
-    >
-      <test
-        name="Sample.Tests.DuplicateNames.SameDisplay"
-        type="Sample.Tests.DuplicateNames"
-        method="SameDisplay(value: same)"
-        time="0.1109683"
-        result="Pass"
-      >
+    <collection total="4" passed="3" failed="1" skipped="0" name="Test collection for Sample.Tests.DuplicateNames" time="0.113">
+      <test name="Sample.Tests.DuplicateNames.SameDisplay" type="Sample.Tests.DuplicateNames" method="SameDisplay(value: same)" time="0.1109683" result="Pass">
         <traits />
       </test>
-      <test
-        name="Sample.Tests.DuplicateNames.SameDisplay"
-        type="Sample.Tests.DuplicateNames"
-        method="SameDisplay(value: same)"
-        time="0.0012606"
-        result="Fail"
-      >
+      <test name="Sample.Tests.DuplicateNames.SameDisplay" type="Sample.Tests.DuplicateNames" method="SameDisplay(value: same)" time="0.0012606" result="Fail">
         <failure>
           <message>Assert.True() Failure
 Expected: True
@@ -125,22 +53,10 @@ Actual:   False</message>
         </failure>
         <traits />
       </test>
-      <test
-        name="Sample.Tests.DuplicateNames.LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)"
-        type="Sample.Tests.DuplicateNames"
-        method="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)"
-        time="0.0001707"
-        result="Pass"
-      >
+      <test name="Sample.Tests.DuplicateNames.LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)" type="Sample.Tests.DuplicateNames" method="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)" time="0.0001707" result="Pass">
         <traits />
       </test>
-      <test
-        name="Sample.Tests.DuplicateNames.LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)"
-        type="Sample.Tests.DuplicateNames"
-        method="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)"
-        time="0.0001953"
-        result="Pass"
-      >
+      <test name="Sample.Tests.DuplicateNames.LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)" type="Sample.Tests.DuplicateNames" method="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)" time="0.0001953" result="Pass">
         <traits />
       </test>
     </collection>

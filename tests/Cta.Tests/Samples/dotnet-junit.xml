@@ -1,23 +1,8 @@
 <testsuites>
-  <testsuite
-    name="SampleXunit.dll"
-    tests="10"
-    skipped="1"
-    failures="3"
-    errors="0"
-    time="0.29504749999999996"
-    timestamp="2026-11-07T10:30:34"
-    hostname="machine"
-    id="0"
-    package="SampleXunit.dll"
-  >
+  <testsuite name="SampleXunit.dll" tests="10" skipped="1" failures="3" errors="0" time="0.29504749999999996" timestamp="2026-11-07T10:30:34" hostname="machine" id="0" package="SampleXunit.dll">
     <properties />
     <testcase classname="Sample.Tests.CalculatorTests" name="Param(x: 2)" time="0.1417570" />
-    <testcase
-      classname="Sample.Tests.DuplicateNames"
-      name="SameDisplay(value: same)"
-      time="0.1418093"
-    />
+    <testcase classname="Sample.Tests.DuplicateNames" name="SameDisplay(value: same)" time="0.1418093" />
     <testcase classname="Sample.Tests.CalculatorTests" name="Param(x: 1)" time="0.0004267" />
     <testcase classname="Sample.Tests.CalculatorTests" name="Passes" time="0.0008681">
       <system-out>hello output
@@ -25,44 +10,25 @@
 </system-out>
     </testcase>
     <testcase classname="Sample.Tests.CalculatorTests" name="Fails" time="0.0061992">
-      <failure
-        type="failure"
-        message="Assert.Equal() Failure: Values differ&#xD;&#xA;Expected: 1&#xD;&#xA;Actual:   2"
-        >at Sample.Tests.CalculatorTests.Fails() in C:\work\sample\Tests.cs:line 6
+      <failure type="failure" message="Assert.Equal() Failure: Values differ&#xD;&#xA;Expected: 1&#xD;&#xA;Actual:   2">at Sample.Tests.CalculatorTests.Fails() in C:\work\sample\Tests.cs:line 6
    at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</failure>
     </testcase>
-    <testcase
-      classname="Sample.Tests.DuplicateNames"
-      name="SameDisplay(value: same)"
-      time="0.0022546"
-    >
-      <failure
-        type="failure"
-        message="Assert.True() Failure&#xD;&#xA;Expected: True&#xD;&#xA;Actual:   False"
-        >at Sample.Tests.DuplicateNames.SameDisplay(Opaque value) in C:\work\sample\Dup.cs:line 13
+    <testcase classname="Sample.Tests.DuplicateNames" name="SameDisplay(value: same)" time="0.0022546">
+      <failure type="failure" message="Assert.True() Failure&#xD;&#xA;Expected: True&#xD;&#xA;Actual:   False">at Sample.Tests.DuplicateNames.SameDisplay(Opaque value) in C:\work\sample\Dup.cs:line 13
    at InvokeStub_DuplicateNames.SameDisplay(Object, Span`1)
    at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</failure>
     </testcase>
     <testcase classname="Sample.Tests.CalculatorTests" name="Skipped" time="0.0010000">
       <skipped />
     </testcase>
-    <testcase
-      classname="Sample.Tests.DuplicateNames"
-      name="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)"
-      time="0.0002064"
-    />
+    <testcase classname="Sample.Tests.DuplicateNames" name="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)" time="0.0002064" />
     <testcase classname="Sample.Tests.CalculatorTests" name="Throws" time="0.0002491">
-      <failure type="failure" message="System.InvalidOperationException : boom &lt;&amp;&gt; 42"
-        >at Sample.Tests.CalculatorTests.Throws() in C:\work\sample\Tests.cs:line 9
+      <failure type="failure" message="System.InvalidOperationException : boom &lt;&amp;&gt; 42">at Sample.Tests.CalculatorTests.Throws() in C:\work\sample\Tests.cs:line 9
    at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</failure>
     </testcase>
-    <testcase
-      classname="Sample.Tests.DuplicateNames"
-      name="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)"
-      time="0.0002771"
-    />
+    <testcase classname="Sample.Tests.DuplicateNames" name="LongText(value: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;···)" time="0.0002771" />
     <system-out>
 Test Framework Informational Messages:
 [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.13)

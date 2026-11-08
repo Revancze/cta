@@ -1,85 +1,9 @@
-<test-run
-  id="2"
-  duration="0.0394069"
-  testcasecount="11"
-  total="11"
-  passed="6"
-  failed="3"
-  inconclusive="1"
-  skipped="1"
-  result="Failed"
-  start-time="2026-11-07T16:58:04Z"
-  end-time="2026-11-07T16:58:06Z"
->
-  <test-suite
-    type="Assembly"
-    name="SampleNunit.dll"
-    fullname="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll"
-    total="11"
-    passed="6"
-    failed="3"
-    inconclusive="1"
-    skipped="1"
-    result="Failed"
-    start-time="2026-11-07T16:58:06Z"
-    end-time="2026-11-07T16:58:06Z"
-    duration="0.0394069"
-  >
-    <test-suite
-      type="TestSuite"
-      name="Sample"
-      fullname="Sample"
-      total="11"
-      passed="6"
-      failed="3"
-      inconclusive="1"
-      skipped="1"
-      result="Failed"
-      start-time="2026-11-07T16:58:06Z"
-      end-time="2026-11-07T16:58:06Z"
-      duration="0.0394069"
-    >
-      <test-suite
-        type="TestSuite"
-        name="Tests"
-        fullname="Sample.Tests"
-        total="11"
-        passed="6"
-        failed="3"
-        inconclusive="1"
-        skipped="1"
-        result="Failed"
-        start-time="2026-11-07T16:58:06Z"
-        end-time="2026-11-07T16:58:06Z"
-        duration="0.0394069"
-      >
-        <test-suite
-          type="TestFixture"
-          name="CalculatorTests"
-          fullname="Sample.Tests.CalculatorTests"
-          classname="Sample.Tests.CalculatorTests"
-          total="7"
-          passed="3"
-          failed="2"
-          inconclusive="1"
-          skipped="1"
-          result="Failed"
-          start-time="2026-11-07T16:58:06Z"
-          end-time="2026-11-07T16:58:06Z"
-          duration="0.035932"
-        >
-          <test-case
-            name="Fails"
-            fullname="Sample.Tests.CalculatorTests.Fails"
-            methodname="Fails"
-            classname="CalculatorTests"
-            result="Failed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.032244"
-            asserts="0"
-            seed="1489513120"
-          >
+<test-run id="2" duration="0.0394069" testcasecount="11" total="11" passed="6" failed="3" inconclusive="1" skipped="1" result="Failed" start-time="2026-11-07T16:58:04Z" end-time="2026-11-07T16:58:06Z">
+  <test-suite type="Assembly" name="SampleNunit.dll" fullname="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" total="11" passed="6" failed="3" inconclusive="1" skipped="1" result="Failed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.0394069">
+    <test-suite type="TestSuite" name="Sample" fullname="Sample" total="11" passed="6" failed="3" inconclusive="1" skipped="1" result="Failed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.0394069">
+      <test-suite type="TestSuite" name="Tests" fullname="Sample.Tests" total="11" passed="6" failed="3" inconclusive="1" skipped="1" result="Failed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.0394069">
+        <test-suite type="TestFixture" name="CalculatorTests" fullname="Sample.Tests.CalculatorTests" classname="Sample.Tests.CalculatorTests" total="7" passed="3" failed="2" inconclusive="1" skipped="1" result="Failed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.035932">
+          <test-case name="Fails" fullname="Sample.Tests.CalculatorTests.Fails" methodname="Fails" classname="CalculatorTests" result="Failed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.032244" asserts="0" seed="1489513120">
             <failure>
               <message>  Assert.That(1, Is.EqualTo(2))
   Expected: 2
@@ -92,73 +16,18 @@
 </stack-trace>
             </failure>
           </test-case>
-          <test-case
-            name="Param(1)"
-            fullname="Sample.Tests.CalculatorTests.Param(1)"
-            methodname="Param(1)"
-            classname="CalculatorTests"
-            result="Passed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.000975"
-            asserts="0"
-            seed="1435448687"
-          />
-          <test-case
-            name="Param(2)"
-            fullname="Sample.Tests.CalculatorTests.Param(2)"
-            methodname="Param(2)"
-            classname="CalculatorTests"
-            result="Passed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.000245"
-            asserts="0"
-            seed="1367913200"
-          />
-          <test-case
-            name="Passes"
-            fullname="Sample.Tests.CalculatorTests.Passes"
-            methodname="Passes"
-            classname="CalculatorTests"
-            result="Passed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.000628"
-            asserts="0"
-            seed="1098113196"
-          >
+          <test-case name="Param(1)" fullname="Sample.Tests.CalculatorTests.Param(1)" methodname="Param(1)" classname="CalculatorTests" result="Passed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.000975" asserts="0" seed="1435448687" />
+          <test-case name="Param(2)" fullname="Sample.Tests.CalculatorTests.Param(2)" methodname="Param(2)" classname="CalculatorTests" result="Passed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.000245" asserts="0" seed="1367913200" />
+          <test-case name="Passes" fullname="Sample.Tests.CalculatorTests.Passes" methodname="Passes" classname="CalculatorTests" result="Passed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.000628" asserts="0" seed="1098113196">
             <output>hello output
 
 </output>
           </test-case>
-          <test-case
-            name="Skipped"
-            fullname="Sample.Tests.CalculatorTests.Skipped"
-            methodname="Skipped"
-            classname="CalculatorTests"
-            result="Skipped"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.000177"
-            asserts="0"
-            seed="362516525"
-          >
+          <test-case name="Skipped" fullname="Sample.Tests.CalculatorTests.Skipped" methodname="Skipped" classname="CalculatorTests" result="Skipped" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.000177" asserts="0" seed="362516525">
             <output>not today
 </output>
           </test-case>
-          <test-case
-            name="Throws"
-            fullname="Sample.Tests.CalculatorTests.Throws"
-            methodname="Throws"
-            classname="CalculatorTests"
-            result="Failed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.001425"
-            asserts="0"
-            seed="1782272839"
-          >
+          <test-case name="Throws" fullname="Sample.Tests.CalculatorTests.Throws" methodname="Throws" classname="CalculatorTests" result="Failed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.001425" asserts="0" seed="1782272839">
             <failure>
               <message>System.InvalidOperationException : boom &lt;&amp;&gt; 42</message>
               <stack-trace>   at Sample.Tests.CalculatorTests.Throws() in C:\work\sample\Tests.cs:line 9
@@ -167,85 +36,16 @@
 </stack-trace>
             </failure>
           </test-case>
-          <test-case
-            name="Unclear"
-            fullname="Sample.Tests.CalculatorTests.Unclear"
-            methodname="Unclear"
-            classname="CalculatorTests"
-            result="Inconclusive"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.000238"
-            asserts="0"
-            seed="426708173"
-          >
+          <test-case name="Unclear" fullname="Sample.Tests.CalculatorTests.Unclear" methodname="Unclear" classname="CalculatorTests" result="Inconclusive" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.000238" asserts="0" seed="426708173">
             <output>maybe
 </output>
           </test-case>
         </test-suite>
-        <test-suite
-          type="TestFixture"
-          name="DuplicateNames"
-          fullname="Sample.Tests.DuplicateNames"
-          classname="Sample.Tests.DuplicateNames"
-          total="4"
-          passed="3"
-          failed="1"
-          inconclusive="0"
-          skipped="0"
-          result="Failed"
-          start-time="2026-11-07T16:58:06Z"
-          end-time="2026-11-07T16:58:06Z"
-          duration="0.0034749"
-        >
-          <test-case
-            name="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1&quot;)"
-            fullname="Sample.Tests.DuplicateNames.LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1&quot;)"
-            methodname="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1&quot;)"
-            classname="DuplicateNames"
-            result="Passed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.0022889"
-            asserts="0"
-            seed="1800879311"
-          />
-          <test-case
-            name="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2&quot;)"
-            fullname="Sample.Tests.DuplicateNames.LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2&quot;)"
-            methodname="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2&quot;)"
-            classname="DuplicateNames"
-            result="Passed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.000245"
-            asserts="0"
-            seed="1117432739"
-          />
-          <test-case
-            name="SameDisplay(same)"
-            fullname="Sample.Tests.DuplicateNames.SameDisplay(same)"
-            methodname="SameDisplay(same)"
-            classname="DuplicateNames"
-            result="Passed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.000184"
-            asserts="0"
-            seed="1844140"
-          />
-          <test-case
-            name="SameDisplay(same)"
-            fullname="Sample.Tests.DuplicateNames.SameDisplay(same)"
-            methodname="SameDisplay(same)"
-            classname="DuplicateNames"
-            result="Failed"
-            start-time="2026-11-07T16:58:06Z"
-            end-time="2026-11-07T16:58:06Z"
-            duration="0.000757"
-            asserts="0"
-            seed="1220466307"
-          >
+        <test-suite type="TestFixture" name="DuplicateNames" fullname="Sample.Tests.DuplicateNames" classname="Sample.Tests.DuplicateNames" total="4" passed="3" failed="1" inconclusive="0" skipped="0" result="Failed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.0034749">
+          <test-case name="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1&quot;)" fullname="Sample.Tests.DuplicateNames.LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1&quot;)" methodname="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1&quot;)" classname="DuplicateNames" result="Passed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.0022889" asserts="0" seed="1800879311" />
+          <test-case name="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2&quot;)" fullname="Sample.Tests.DuplicateNames.LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2&quot;)" methodname="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2&quot;)" classname="DuplicateNames" result="Passed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.000245" asserts="0" seed="1117432739" />
+          <test-case name="SameDisplay(same)" fullname="Sample.Tests.DuplicateNames.SameDisplay(same)" methodname="SameDisplay(same)" classname="DuplicateNames" result="Passed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.000184" asserts="0" seed="1844140" />
+          <test-case name="SameDisplay(same)" fullname="Sample.Tests.DuplicateNames.SameDisplay(same)" methodname="SameDisplay(same)" classname="DuplicateNames" result="Failed" start-time="2026-11-07T16:58:06Z" end-time="2026-11-07T16:58:06Z" duration="0.000757" asserts="0" seed="1220466307">
             <failure>
               <message>  Assert.That(value.Value, Is.EqualTo(1))
   Expected: 1
