@@ -50,3 +50,18 @@ TITLE: Formát se pozná podle obsahu
 STATEMENT: Formát reportu (TRX, JUnit XML, NUnit 3 XML, xUnit v2 XML) se pozná podle kořenového elementu a jeho jmenného prostoru, nikdy podle názvu souboru. Čte se jen začátek souboru. Neznámý formát, prázdný soubor nebo soubor, který není XML, se odmítne.
 
 [[/SECTION]]
+
+[[SECTION]]
+TITLE: NUnit 3 XML
+
+[REQUIREMENT]
+UID: CTA-PARSE-008
+TITLE: NUnit 3 XML se přečte úplně
+STATEMENT: Parser přečte NUnit 3 XML z nunit3-console i z NunitXml.TestLoggeru včetně celého jména testu, sestavení, výsledku, doby běhu, chyby, důvodu a výstupu. Selhání s označením Error, Invalid nebo Cancelled je Error, Inconclusive se neztrácí a Warning je Passed se zachovaným důvodem.
+
+[REQUIREMENT]
+UID: CTA-PARSE-009
+TITLE: Neúplný NUnit report se odmítne
+STATEMENT: Report s jiným kořenem, bez celkového počtu, s počtem testů nebo výsledků, který nesedí s tím, co report uvádí, s neznámým výsledkem nebo neplatnou dobou běhu parser odmítne. Počet, který nástroj neuvádí, se nekontroluje.
+
+[[/SECTION]]

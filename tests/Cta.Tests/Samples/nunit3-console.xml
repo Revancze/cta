@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-run id="0" runstate="Runnable" testcasecount="26" result="Failed" total="26" passed="10" failed="10" warnings="1" inconclusive="2" skipped="3" asserts="11" engine-version="3.22.0.0" clr-version="4.0.30319.42000" start-time="2026-11-08 09:04:24Z" end-time="2026-11-08 09:04:25Z" duration="0.965855">
+  <command-line><![CDATA[C:\work\sample\nunit.consolerunner\3.22.0\tools\nunit3-console.exe C:\work\sample\bin\Debug\net10.0\SampleNunit.dll --result=C:\work\sample --noheader]]></command-line>
+  <test-suite type="Assembly" id="1-1042" name="SampleNunit.dll" fullname="C:\work\sample\bin\Debug\net10.0\SampleNunit.dll" runstate="Runnable" testcasecount="26" result="Failed" site="Child" start-time="2026-11-08T09:04:25.5956776Z" end-time="2026-11-08T09:04:25.6961770Z" duration="0.100466" total="26" passed="10" failed="10" warnings="1" inconclusive="2" skipped="3" asserts="11">
+    <environment framework-version="4.3.2.0" clr-version="10.0.13" os-version="Microsoft Windows 10.0.26300" platform="Win32NT" cwd="C:\work\sample" machine-name="machine" user="user" user-domain="machine" culture="cs-CZ" uiculture="cs-CZ" os-architecture="x64" />
+    <settings>
+      <setting name="DisposeRunners" value="True" />
+      <setting name="WorkDirectory" value="C:\work\sample" />
+      <setting name="ImageRuntimeVersion" value="4.0.30319" />
+      <setting name="ImageTargetFrameworkName" value=".NETCoreApp,Version=v10.0" />
+      <setting name="ImageRequiresX86" value="False" />
+      <setting name="ImageRequiresDefaultAppDomainAssemblyResolver" value="False" />
+      <setting name="TargetRuntimeFramework" value="netcore-10.0" />
+      <setting name="NumberOfTestWorkers" value="8" />
+    </settings>
+    <properties>
+      <property name="_PID" value="44868" />
+      <property name="_APPDOMAIN" value="nunit-agent" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="TestSuite" id="1-1043" name="Sample" fullname="Sample" runstate="Runnable" testcasecount="26" result="Failed" site="Child" start-time="2026-11-08T09:04:25.5980216Z" end-time="2026-11-08T09:04:25.6961750Z" duration="0.098153" total="26" passed="10" failed="10" warnings="1" inconclusive="2" skipped="3" asserts="11">
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1-1044" name="Tests" fullname="Sample.Tests" runstate="Runnable" testcasecount="26" result="Failed" site="Child" start-time="2026-11-08T09:04:25.5981906Z" end-time="2026-11-08T09:04:25.6961728Z" duration="0.097982" total="26" passed="10" failed="10" warnings="1" inconclusive="2" skipped="3" asserts="11">
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestFixture" id="1-1018" name="BrokenFixture" fullname="Sample.Tests.BrokenFixture" classname="Sample.Tests.BrokenFixture" runstate="Runnable" testcasecount="2" result="Failed" label="Error" site="SetUp" start-time="2026-11-08T09:04:25.5987847Z" end-time="2026-11-08T09:04:25.6119097Z" duration="0.013125" total="2" passed="0" failed="2" warnings="0" inconclusive="0" skipped="0" asserts="0">
+          <failure>
+            <message><![CDATA[System.InvalidOperationException : fixture exploded]]></message>
+            <stack-trace><![CDATA[   at Sample.Tests.BrokenFixture.Once() in C:\work\sample\More.cs:line 32
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)]]></stack-trace>
+          </failure>
+          <test-case id="1-1019" name="A" fullname="Sample.Tests.BrokenFixture.A" methodname="A" classname="Sample.Tests.BrokenFixture" runstate="Runnable" seed="1368579868" result="Failed" label="Error" site="Parent" start-time="2026-11-08T09:04:25.5987847Z" end-time="2026-11-08T09:04:25.6106132Z" duration="0.011869" asserts="0">
+            <failure>
+              <message><![CDATA[OneTimeSetUp: System.InvalidOperationException : fixture exploded]]></message>
+              <stack-trace><![CDATA[   at Sample.Tests.BrokenFixture.Once() in C:\work\sample\More.cs:line 32
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)]]></stack-trace>
+            </failure>
+          </test-case>
+          <test-case id="1-1020" name="B" fullname="Sample.Tests.BrokenFixture.B" methodname="B" classname="Sample.Tests.BrokenFixture" runstate="Runnable" seed="250639254" result="Failed" label="Error" site="Parent" start-time="2026-11-08T09:04:25.5987847Z" end-time="2026-11-08T09:04:25.6112679Z" duration="0.012483" asserts="0">
+            <failure>
+              <message><![CDATA[OneTimeSetUp: System.InvalidOperationException : fixture exploded]]></message>
+              <stack-trace><![CDATA[   at Sample.Tests.BrokenFixture.Once() in C:\work\sample\More.cs:line 32
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)]]></stack-trace>
+            </failure>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1-1014" name="BrokenSetup" fullname="Sample.Tests.BrokenSetup" classname="Sample.Tests.BrokenSetup" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-08T09:04:25.6136197Z" end-time="2026-11-08T09:04:25.6162415Z" duration="0.002622" total="1" passed="0" failed="1" warnings="0" inconclusive="0" skipped="0" asserts="0">
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-case id="1-1015" name="NeverRuns" fullname="Sample.Tests.BrokenSetup.NeverRuns" methodname="NeverRuns" classname="Sample.Tests.BrokenSetup" runstate="Runnable" seed="8759126" result="Failed" label="Error" start-time="2026-11-08T09:04:25.6137660Z" end-time="2026-11-08T09:04:25.6156737Z" duration="0.001908" asserts="0">
+            <failure>
+              <message><![CDATA[System.InvalidOperationException : setup exploded]]></message>
+              <stack-trace><![CDATA[   at Sample.Tests.BrokenSetup.SetUp() in C:\work\sample\More.cs:line 18
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)]]></stack-trace>
+            </failure>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1-1016" name="BrokenTeardown" fullname="Sample.Tests.BrokenTeardown" classname="Sample.Tests.BrokenTeardown" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-08T09:04:25.6162811Z" end-time="2026-11-08T09:04:25.6170092Z" duration="0.000728" total="1" passed="0" failed="1" warnings="0" inconclusive="0" skipped="0" asserts="0">
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-case id="1-1017" name="RunsThenBreaks" fullname="Sample.Tests.BrokenTeardown.RunsThenBreaks" methodname="RunsThenBreaks" classname="Sample.Tests.BrokenTeardown" runstate="Runnable" seed="1568419506" result="Failed" label="Error" start-time="2026-11-08T09:04:25.6163784Z" end-time="2026-11-08T09:04:25.6169811Z" duration="0.000603" asserts="0">
+            <failure>
+              <message><![CDATA[TearDown : System.InvalidOperationException : teardown exploded]]></message>
+              <stack-trace><![CDATA[--TearDown
+   at Sample.Tests.BrokenTeardown.TearDown() in C:\work\sample\More.cs:line 25
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)]]></stack-trace>
+            </failure>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1-1031" name="CalculatorTests" fullname="Sample.Tests.CalculatorTests" classname="Sample.Tests.CalculatorTests" runstate="Runnable" testcasecount="7" result="Failed" site="Child" start-time="2026-11-08T09:04:25.6170227Z" end-time="2026-11-08T09:04:25.6338097Z" duration="0.016787" total="7" passed="3" failed="2" warnings="0" inconclusive="1" skipped="1" asserts="3">
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-case id="1-1033" name="Fails" fullname="Sample.Tests.CalculatorTests.Fails" methodname="Fails" classname="Sample.Tests.CalculatorTests" runstate="Runnable" seed="583830489" result="Failed" start-time="2026-11-08T09:04:25.6170861Z" end-time="2026-11-08T09:04:25.6314037Z" duration="0.014318" asserts="1">
+            <failure>
+              <message><![CDATA[  Assert.That(1, Is.EqualTo(2))
+  Expected: 2
+  But was:  1
+]]></message>
+              <stack-trace><![CDATA[   at Sample.Tests.CalculatorTests.Fails() in C:\work\sample\Tests.cs:line 6
+]]></stack-trace>
+            </failure>
+            <assertions>
+              <assertion result="Failed">
+                <message><![CDATA[  Assert.That(1, Is.EqualTo(2))
+  Expected: 2
+  But was:  1
+]]></message>
+                <stack-trace><![CDATA[   at Sample.Tests.CalculatorTests.Fails() in C:\work\sample\Tests.cs:line 6
+]]></stack-trace>
+              </assertion>
+            </assertions>
+          </test-case>
+          <test-suite type="ParameterizedMethod" id="1-1037" name="Param" fullname="Sample.Tests.CalculatorTests.Param" classname="Sample.Tests.CalculatorTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-08T09:04:25.6314413Z" end-time="2026-11-08T09:04:25.6328898Z" duration="0.001449" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="2">
+            <test-case id="1-1035" name="Param(1)" fullname="Sample.Tests.CalculatorTests.Param(1)" methodname="Param" classname="Sample.Tests.CalculatorTests" runstate="Runnable" seed="655433852" result="Passed" start-time="2026-11-08T09:04:25.6316088Z" end-time="2026-11-08T09:04:25.6326588Z" duration="0.001050" asserts="1" />
+            <test-case id="1-1036" name="Param(2)" fullname="Sample.Tests.CalculatorTests.Param(2)" methodname="Param" classname="Sample.Tests.CalculatorTests" runstate="Runnable" seed="1081368615" result="Passed" start-time="2026-11-08T09:04:25.6326759Z" end-time="2026-11-08T09:04:25.6328751Z" duration="0.000199" asserts="1" />
+          </test-suite>
+          <test-case id="1-1032" name="Passes" fullname="Sample.Tests.CalculatorTests.Passes" methodname="Passes" classname="Sample.Tests.CalculatorTests" runstate="Runnable" seed="335240590" result="Passed" start-time="2026-11-08T09:04:25.6328989Z" end-time="2026-11-08T09:04:25.6333280Z" duration="0.000429" asserts="0">
+            <output><![CDATA[hello output
+]]></output>
+          </test-case>
+          <test-case id="1-1034" name="Skipped" fullname="Sample.Tests.CalculatorTests.Skipped" methodname="Skipped" classname="Sample.Tests.CalculatorTests" runstate="Ignored" seed="321531839" result="Skipped" label="Ignored" start-time="2026-11-08T09:04:25.6333404Z" end-time="2026-11-08T09:04:25.6334888Z" duration="0.000149" asserts="0">
+            <properties>
+              <property name="_SKIPREASON" value="not today" />
+            </properties>
+            <reason>
+              <message><![CDATA[not today]]></message>
+            </reason>
+          </test-case>
+          <test-case id="1-1038" name="Throws" fullname="Sample.Tests.CalculatorTests.Throws" methodname="Throws" classname="Sample.Tests.CalculatorTests" runstate="Runnable" seed="560930676" result="Failed" label="Error" start-time="2026-11-08T09:04:25.6334932Z" end-time="2026-11-08T09:04:25.6336132Z" duration="0.000120" asserts="0">
+            <failure>
+              <message><![CDATA[System.InvalidOperationException : boom <&> 42]]></message>
+              <stack-trace><![CDATA[   at Sample.Tests.CalculatorTests.Throws() in C:\work\sample\Tests.cs:line 9
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)]]></stack-trace>
+            </failure>
+          </test-case>
+          <test-case id="1-1039" name="Unclear" fullname="Sample.Tests.CalculatorTests.Unclear" methodname="Unclear" classname="Sample.Tests.CalculatorTests" runstate="Runnable" seed="465458137" result="Inconclusive" start-time="2026-11-08T09:04:25.6336217Z" end-time="2026-11-08T09:04:25.6337904Z" duration="0.000169" asserts="0">
+            <reason>
+              <message><![CDATA[maybe]]></message>
+            </reason>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1-1000" name="DuplicateNames" fullname="Sample.Tests.DuplicateNames" classname="Sample.Tests.DuplicateNames" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-11-08T09:04:25.6338290Z" end-time="2026-11-08T09:04:25.6357436Z" duration="0.001915" total="4" passed="3" failed="1" warnings="0" inconclusive="0" skipped="0" asserts="4">
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="ParameterizedMethod" id="1-1006" name="LongText" fullname="Sample.Tests.DuplicateNames.LongText" classname="Sample.Tests.DuplicateNames" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-08T09:04:25.6338984Z" end-time="2026-11-08T09:04:25.6351685Z" duration="0.001270" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="2">
+            <test-case id="1-1004" name="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1&quot;)" fullname="Sample.Tests.DuplicateNames.LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1&quot;)" methodname="LongText" classname="Sample.Tests.DuplicateNames" runstate="Runnable" seed="1128967058" result="Passed" start-time="2026-11-08T09:04:25.6339039Z" end-time="2026-11-08T09:04:25.6349883Z" duration="0.001085" asserts="1" />
+            <test-case id="1-1005" name="LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2&quot;)" fullname="Sample.Tests.DuplicateNames.LongText(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2&quot;)" methodname="LongText" classname="Sample.Tests.DuplicateNames" runstate="Runnable" seed="1092159144" result="Passed" start-time="2026-11-08T09:04:25.6350027Z" end-time="2026-11-08T09:04:25.6351577Z" duration="0.000155" asserts="1" />
+          </test-suite>
+          <test-suite type="ParameterizedMethod" id="1-1003" name="SameDisplay" fullname="Sample.Tests.DuplicateNames.SameDisplay" classname="Sample.Tests.DuplicateNames" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-11-08T09:04:25.6351757Z" end-time="2026-11-08T09:04:25.6357339Z" duration="0.000558" total="2" passed="1" failed="1" warnings="0" inconclusive="0" skipped="0" asserts="2">
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1-1001" name="SameDisplay(same)" fullname="Sample.Tests.DuplicateNames.SameDisplay(same)" methodname="SameDisplay" classname="Sample.Tests.DuplicateNames" runstate="Runnable" seed="2039712457" result="Passed" start-time="2026-11-08T09:04:25.6351856Z" end-time="2026-11-08T09:04:25.6352995Z" duration="0.000114" asserts="1" />
+            <test-case id="1-1002" name="SameDisplay(same)" fullname="Sample.Tests.DuplicateNames.SameDisplay(same)" methodname="SameDisplay" classname="Sample.Tests.DuplicateNames" runstate="Runnable" seed="1312289810" result="Failed" start-time="2026-11-08T09:04:25.6353069Z" end-time="2026-11-08T09:04:25.6357206Z" duration="0.000414" asserts="1">
+              <failure>
+                <message><![CDATA[  Assert.That(value.Value, Is.EqualTo(1))
+  Expected: 1
+  But was:  2
+]]></message>
+                <stack-trace><![CDATA[   at Sample.Tests.DuplicateNames.SameDisplay(Opaque value) in C:\work\sample\Dup.cs:line 14
+   at InvokeStub_DuplicateNames.SameDisplay(Object, Span`1)
+]]></stack-trace>
+              </failure>
+              <assertions>
+                <assertion result="Failed">
+                  <message><![CDATA[  Assert.That(value.Value, Is.EqualTo(1))
+  Expected: 1
+  But was:  2
+]]></message>
+                  <stack-trace><![CDATA[   at Sample.Tests.DuplicateNames.SameDisplay(Opaque value) in C:\work\sample\Dup.cs:line 14
+   at InvokeStub_DuplicateNames.SameDisplay(Object, Span`1)
+]]></stack-trace>
+                </assertion>
+              </assertions>
+            </test-case>
+          </test-suite>
+        </test-suite>
+        <test-suite type="TestFixture" id="1-1023" name="IgnoredFixture" fullname="Sample.Tests.IgnoredFixture" classname="Sample.Tests.IgnoredFixture" runstate="Ignored" testcasecount="1" result="Skipped" label="Ignored" site="SetUp" start-time="2026-11-08T09:04:25.6357640Z" end-time="2026-11-08T09:04:25.6359003Z" duration="0.000136" total="1" passed="0" failed="0" warnings="0" inconclusive="0" skipped="1" asserts="0">
+          <properties>
+            <property name="_SKIPREASON" value="whole fixture off" />
+          </properties>
+          <reason>
+            <message><![CDATA[whole fixture off]]></message>
+          </reason>
+          <test-case id="1-1024" name="C" fullname="Sample.Tests.IgnoredFixture.C" methodname="C" classname="Sample.Tests.IgnoredFixture" runstate="Runnable" seed="80051596" result="Skipped" label="Ignored" site="Parent" start-time="2026-11-08T09:04:25.6357640Z" end-time="2026-11-08T09:04:25.6358941Z" duration="0.000130" asserts="0">
+            <reason>
+              <message><![CDATA[OneTimeSetUp: whole fixture off]]></message>
+            </reason>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1-1021" name="Invalid" fullname="Sample.Tests.Invalid" classname="Sample.Tests.Invalid" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-08T09:04:25.6359122Z" end-time="2026-11-08T09:04:25.6360188Z" duration="0.000107" total="1" passed="0" failed="1" warnings="0" inconclusive="0" skipped="0" asserts="0">
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-case id="1-1022" name="HasParameter" fullname="Sample.Tests.Invalid.HasParameter" methodname="HasParameter" classname="Sample.Tests.Invalid" runstate="NotRunnable" seed="492805551" result="Failed" label="Invalid" start-time="2026-11-08T09:04:25.6359783Z" end-time="2026-11-08T09:04:25.6360116Z" duration="0.000033" asserts="0">
+            <properties>
+              <property name="_SKIPREASON" value="No arguments were provided" />
+            </properties>
+            <failure>
+              <message><![CDATA[No arguments were provided]]></message>
+            </failure>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1-1007" name="MoreStates" fullname="Sample.Tests.MoreStates" classname="Sample.Tests.MoreStates" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-11-08T09:04:25.6360270Z" end-time="2026-11-08T09:04:25.6952477Z" duration="0.059221" total="6" passed="1" failed="2" warnings="1" inconclusive="1" skipped="1" asserts="2">
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-case id="1-1010" name="AssumeFails" fullname="Sample.Tests.MoreStates.AssumeFails" methodname="AssumeFails" classname="Sample.Tests.MoreStates" runstate="Runnable" seed="156739253" result="Inconclusive" start-time="2026-11-08T09:04:25.6360578Z" end-time="2026-11-08T09:04:25.6364279Z" duration="0.000370" asserts="0">
+            <reason>
+              <message><![CDATA[  not here
+Assume.That(1, Is.EqualTo(2))
+  Expected: 2
+  But was:  1
+]]></message>
+            </reason>
+          </test-case>
+          <test-case id="1-1013" name="Multiple" fullname="Sample.Tests.MoreStates.Multiple" methodname="Multiple" classname="Sample.Tests.MoreStates" runstate="Runnable" seed="115429386" result="Failed" start-time="2026-11-08T09:04:25.6364404Z" end-time="2026-11-08T09:04:25.6376790Z" duration="0.001239" asserts="2">
+            <failure>
+              <message><![CDATA[Multiple failures or warnings in test:
+  1)   Assert.That(1, Is.EqualTo(2))
+  Expected: 2
+  But was:  1
+
+  2)   Assert.That(3, Is.EqualTo(4))
+  Expected: 4
+  But was:  3
+
+]]></message>
+              <stack-trace><![CDATA[   at Sample.Tests.MoreStates.Multiple() in C:\work\sample\More.cs:line 12
+]]></stack-trace>
+            </failure>
+            <assertions>
+              <assertion result="Failed">
+                <message><![CDATA[  Assert.That(1, Is.EqualTo(2))
+  Expected: 2
+  But was:  1
+]]></message>
+                <stack-trace><![CDATA[   at Sample.Tests.MoreStates.<>c.<Multiple>b__5_0() in C:\work\sample\More.cs:line 12
+   at NUnit.Framework.Assert.Multiple(TestDelegate testDelegate)
+   at Sample.Tests.MoreStates.Multiple() in C:\work\sample\More.cs:line 12
+]]></stack-trace>
+              </assertion>
+              <assertion result="Failed">
+                <message><![CDATA[  Assert.That(3, Is.EqualTo(4))
+  Expected: 4
+  But was:  3
+]]></message>
+                <stack-trace><![CDATA[   at Sample.Tests.MoreStates.<>c.<Multiple>b__5_0() in C:\work\sample\More.cs:line 12
+   at NUnit.Framework.Assert.Multiple(TestDelegate testDelegate)
+   at Sample.Tests.MoreStates.Multiple() in C:\work\sample\More.cs:line 12
+]]></stack-trace>
+              </assertion>
+            </assertions>
+          </test-case>
+          <test-case id="1-1008" name="OnlyByHand" fullname="Sample.Tests.MoreStates.OnlyByHand" methodname="OnlyByHand" classname="Sample.Tests.MoreStates" runstate="Explicit" seed="242173835" result="Skipped" label="Explicit" start-time="2026-11-08T09:04:25.6376939Z" end-time="2026-11-08T09:04:25.6377270Z" duration="0.000033" asserts="0">
+            <properties>
+              <property name="_SKIPREASON" value="only by hand" />
+            </properties>
+            <reason>
+              <message><![CDATA[only by hand]]></message>
+            </reason>
+          </test-case>
+          <test-case id="1-1012" name="Prints" fullname="Sample.Tests.MoreStates.Prints" methodname="Prints" classname="Sample.Tests.MoreStates" runstate="Runnable" seed="961236782" result="Passed" start-time="2026-11-08T09:04:25.6377292Z" end-time="2026-11-08T09:04:25.6380726Z" duration="0.000344" asserts="0">
+            <output><![CDATA[stdout line
+]]></output>
+          </test-case>
+          <test-case id="1-1011" name="TimesOut" fullname="Sample.Tests.MoreStates.TimesOut" methodname="TimesOut" classname="Sample.Tests.MoreStates" runstate="Runnable" seed="740011880" result="Failed" start-time="2026-11-08T09:04:25.6380780Z" end-time="2026-11-08T09:04:25.6947365Z" duration="0.056659" asserts="0">
+            <properties>
+              <property name="Timeout" value="50" />
+            </properties>
+            <failure>
+              <message><![CDATA[Test exceeded Timeout value of 50ms]]></message>
+            </failure>
+          </test-case>
+          <test-case id="1-1009" name="Warns" fullname="Sample.Tests.MoreStates.Warns" methodname="Warns" classname="Sample.Tests.MoreStates" runstate="Runnable" seed="793669558" result="Warning" start-time="2026-11-08T09:04:25.6947870Z" end-time="2026-11-08T09:04:25.6952185Z" duration="0.000432" asserts="0">
+            <reason>
+              <message><![CDATA[careful]]></message>
+            </reason>
+            <assertions>
+              <assertion result="Warning">
+                <message><![CDATA[careful]]></message>
+                <stack-trace><![CDATA[   at Sample.Tests.MoreStates.Warns() in C:\work\sample\More.cs:line 8
+]]></stack-trace>
+              </assertion>
+            </assertions>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1-1040" name="Outer+Inner" fullname="Sample.Tests.Outer+Inner" classname="Sample.Tests.Outer+Inner" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-08T09:04:25.6952788Z" end-time="2026-11-08T09:04:25.6954372Z" duration="0.000158" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="0">
+          <test-case id="1-1041" name="Nested" fullname="Sample.Tests.Outer+Inner.Nested" methodname="Nested" classname="Sample.Tests.Outer+Inner" runstate="Runnable" seed="1761825872" result="Passed" start-time="2026-11-08T09:04:25.6953989Z" end-time="2026-11-08T09:04:25.6954327Z" duration="0.000034" asserts="0" />
+        </test-suite>
+        <test-suite type="ParameterizedFixture" id="1-1029" name="ParamFixture" fullname="Sample.Tests.ParamFixture" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-08T09:04:25.5982122Z" end-time="2026-11-08T09:04:25.6961684Z" duration="0.097956" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="2">
+          <test-suite type="TestFixture" id="1-1025" name="ParamFixture(1)" fullname="Sample.Tests.ParamFixture(1)" classname="Sample.Tests.ParamFixture" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-08T09:04:25.6954451Z" end-time="2026-11-08T09:04:25.6957994Z" duration="0.000354" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+            <test-case id="1-1026" name="InFixture" fullname="Sample.Tests.ParamFixture(1).InFixture" methodname="InFixture" classname="Sample.Tests.ParamFixture" runstate="Runnable" seed="681104654" result="Passed" start-time="2026-11-08T09:04:25.6956415Z" end-time="2026-11-08T09:04:25.6957853Z" duration="0.000144" asserts="1" />
+          </test-suite>
+          <test-suite type="TestFixture" id="1-1027" name="ParamFixture(2)" fullname="Sample.Tests.ParamFixture(2)" classname="Sample.Tests.ParamFixture" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-08T09:04:25.6958121Z" end-time="2026-11-08T09:04:25.6961572Z" duration="0.000345" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+            <test-case id="1-1028" name="InFixture" fullname="Sample.Tests.ParamFixture(2).InFixture" methodname="InFixture" classname="Sample.Tests.ParamFixture" runstate="Runnable" seed="1123728204" result="Passed" start-time="2026-11-08T09:04:25.6960866Z" end-time="2026-11-08T09:04:25.6961470Z" duration="0.000060" asserts="1" />
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Xml;
 using Cta.Contracts;
 using static Cta.Core.ReportParsing;
@@ -11,7 +10,7 @@ namespace Cta.Core;
 /// parser follows what pytest, CTest and JunitXml.TestLogger really write (ADR-0011). Nothing per
 /// test stays in memory (ADR-0007).
 /// </summary>
-public sealed partial class JUnitReport
+public sealed class JUnitReport
 {
     private readonly string _path;
 
@@ -43,7 +42,7 @@ public sealed partial class JUnitReport
         DateTimeOffset? started = null;
         if (reader.LocalName == "testsuite" || reader.ReadToDescendant("testsuite"))
         {
-            started = ReadTimestamp(reader);
+            started = ReadZonedTime(reader, "timestamp");
         }
 
         return new JUnitReport(path, started);
@@ -106,7 +105,7 @@ public sealed partial class JUnitReport
     {
         var name = Required(reader, "name");
         var className = reader.GetAttribute("classname");
-        var duration = ReadDuration(reader);
+        var duration = ReadSeconds(reader, "time");
         var status = reader.GetAttribute("status");
 
         var outcome = TestOutcome.Passed;
@@ -192,31 +191,6 @@ public sealed partial class JUnitReport
             _ => 0,
         };
 
-    private static TimeSpan ReadDuration(XmlReader reader)
-    {
-        var text = reader.GetAttribute("time");
-        if (string.IsNullOrEmpty(text))
-        {
-            return TimeSpan.Zero;
-        }
-
-        if (
-            !double.TryParse(
-                text,
-                NumberStyles.Float,
-                CultureInfo.InvariantCulture,
-                out var seconds
-            )
-            || !double.IsFinite(seconds)
-            || seconds < 0
-        )
-        {
-            throw new InvalidDataException($"JUnit XML test case has invalid time '{text}'.");
-        }
-
-        return TimeSpan.FromSeconds(seconds);
-    }
-
     /// <summary>
     /// Numbers of tests by outcome. A number the tool does not write stays null and is not
     /// checked, so a missing attribute never pretends to be zero.
@@ -235,11 +209,11 @@ public sealed partial class JUnitReport
 
         public static Counts Read(XmlReader reader) =>
             new(
-                Number(reader, "tests"),
-                Number(reader, "failures"),
-                Number(reader, "errors"),
-                Number(reader, "skipped"),
-                Number(reader, "disabled")
+                ReadCount(reader, "tests"),
+                ReadCount(reader, "failures"),
+                ReadCount(reader, "errors"),
+                ReadCount(reader, "skipped"),
+                ReadCount(reader, "disabled")
             );
 
         public static Counts Of(TestOutcome outcome) =>
@@ -281,36 +255,5 @@ public sealed partial class JUnitReport
                 );
             }
         }
-
-        private static int? Number(XmlReader reader, string attribute)
-        {
-            var text = reader.GetAttribute(attribute);
-            if (text is null)
-            {
-                return null;
-            }
-
-            return int.TryParse(
-                text,
-                NumberStyles.None,
-                CultureInfo.InvariantCulture,
-                out var value
-            )
-                ? value
-                : throw new InvalidDataException(
-                    $"JUnit XML has invalid number of {attribute} '{text}'."
-                );
-        }
     }
-
-    private static DateTimeOffset? ReadTimestamp(XmlReader reader)
-    {
-        var text = reader.GetAttribute("timestamp");
-        return text is not null && TimeZonePattern().IsMatch(text)
-            ? DateTimeOffset.Parse(text, CultureInfo.InvariantCulture)
-            : null;
-    }
-
-    [GeneratedRegex(@"(?:Z|[+-]\d{2}:\d{2})$")]
-    private static partial Regex TimeZonePattern();
 }

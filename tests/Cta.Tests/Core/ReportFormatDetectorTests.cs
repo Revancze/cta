@@ -17,6 +17,7 @@ public sealed class ReportFormatDetectorTests : IDisposable
     [InlineData("ctest.xml", ReportFormat.JUnit)]
     [InlineData("dotnet-junit.xml", ReportFormat.JUnit)]
     [InlineData("nunit3.xml", ReportFormat.NUnit3)]
+    [InlineData("nunit3-console.xml", ReportFormat.NUnit3)]
     [InlineData("xunit-v2.xml", ReportFormat.XUnit2)]
     public void Sample_report_is_recognised(string sample, ReportFormat expected)
     {

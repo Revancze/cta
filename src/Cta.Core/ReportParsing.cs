@@ -1,4 +1,5 @@
 using System.Buffers;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Xml;
 using Cta.Contracts;
@@ -49,15 +50,71 @@ internal static partial class ReportParsing
                 ? name
                 : $"{className}.{name}";
         var localName = className is null ? fullName : fullName[(className.Length + 1)..];
-        // Parameters follow the method: "(x: 1)" in .NET, "[1]" in pytest.
-        var parameters = localName.AsSpan().IndexOfAny(ParameterStart);
 
         return new TestCase
         {
             FullName = fullName,
             ClassName = className,
-            MethodName = parameters < 0 ? localName : localName[..parameters],
+            MethodName = WithoutParameters(localName),
         };
+    }
+
+    /// <summary>Parameters follow the method: "(x: 1)" in .NET, "[1]" in pytest.</summary>
+    public static string WithoutParameters(string name)
+    {
+        var parameters = name.AsSpan().IndexOfAny(ParameterStart);
+        return parameters < 0 ? name : name[..parameters];
+    }
+
+    /// <summary>A number the tool does not write is null, never zero.</summary>
+    public static int? ReadCount(XmlReader reader, string attribute)
+    {
+        var text = reader.GetAttribute(attribute);
+        if (text is null)
+        {
+            return null;
+        }
+
+        return int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var value)
+            ? value
+            : throw new InvalidDataException($"Report has invalid number of {attribute} '{text}'.");
+    }
+
+    public static TimeSpan ReadSeconds(XmlReader reader, string attribute)
+    {
+        var text = reader.GetAttribute(attribute);
+        if (string.IsNullOrEmpty(text))
+        {
+            return TimeSpan.Zero;
+        }
+
+        if (
+            !double.TryParse(
+                text,
+                NumberStyles.Float,
+                CultureInfo.InvariantCulture,
+                out var seconds
+            )
+            || !double.IsFinite(seconds)
+            || seconds < 0
+        )
+        {
+            throw new InvalidDataException($"Report has invalid time '{text}'.");
+        }
+
+        return TimeSpan.FromSeconds(seconds);
+    }
+
+    /// <summary>
+    /// A time without a time zone may be local or UTC, and a guess would shift the history by
+    /// hours, so it counts as unknown.
+    /// </summary>
+    public static DateTimeOffset? ReadZonedTime(XmlReader reader, string attribute)
+    {
+        var text = reader.GetAttribute(attribute);
+        return text is not null && TimeZonePattern().IsMatch(text)
+            ? DateTimeOffset.Parse(text, CultureInfo.InvariantCulture)
+            : null;
     }
 
     /// <summary>
@@ -112,6 +169,12 @@ internal static partial class ReportParsing
     [GeneratedRegex(@"^[A-Za-z_][\w.`$]*(?:Exception|Error)$")]
     private static partial Regex ExceptionNamePattern();
 
-    [GeneratedRegex(@"^([A-Za-z_][\w.`$]*(?:Exception|Error))\s*:\s*")]
+    // NUnit puts the place of the failure before the exception.
+    [GeneratedRegex(
+        @"^(?:(?:OneTimeSetUp|OneTimeTearDown|SetUp|TearDown)\s*:\s*)?([A-Za-z_][\w.`$]*(?:Exception|Error))\s*:\s*"
+    )]
     private static partial Regex ExceptionPrefixPattern();
+
+    [GeneratedRegex(@"(?:Z|[+-]\d{2}:\d{2})$")]
+    private static partial Regex TimeZonePattern();
 }
