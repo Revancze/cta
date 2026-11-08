@@ -160,7 +160,7 @@ vygeneruje trasovací matici bez chyb.
 - [x] Jedno spojení na import, jedna transakce, `foreign_keys = ON`, WAL
 - [x] Výpočet Fingerprint a RunKey, idempotentní import
 - [x] Testy: vytvoření DB, duplicitní import, porušení cizího klíče
-- [ ] Test migrace z předchozí verze: až přibude druhá migrace, teď existuje jen jedna
+- [x] Test migrace z předchozí verze: až přibude druhá migrace, teď existuje jen jedna
 - [x] Test výkonu a paměti importu (čas a alokace pro 10 000 výsledků, špička živé paměti
       10 000 vs. 100 000)
 
@@ -182,7 +182,7 @@ při 10 000.
 - [x] Otisk chyby: typ výjimky + normalizovaná zpráva (bez čísel, GUIDů, cest) + první rámec
       stacku; když stack trace nepozná, jen typ a zpráva
 - [ ] Snapshot testy na sadě vzorových reportů, včetně poškozených a prázdných
-- [ ] `OutcomeDetail`: původní označení výsledku (Timeout, Aborted, Disconnected, xfail…),
+- [x] `OutcomeDetail`: původní označení výsledku (Timeout, Aborted, Disconnected, xfail…),
       jen když ho report uvádí; ověřit na reálném TRX s timeoutem
 
 **Brána G2:** všechny reporty ze vzorového .NET projektu se naimportují bez ztráty a počet
@@ -204,6 +204,7 @@ NUnit vynechává `Inconclusive` (6 vs. 7 testů), a TRX ho navíc zapisuje jako
 - [ ] `cta pull`: stáhne nové artefakty přes GitHub API (token z `gh auth` nebo proměnné),
       naimportuje, smaže
 - [ ] Nasadit na první vlastní repozitář
+- [ ] `cta run` pozná pád test hostu v půlce běhu (angličtina přes `DOTNET_CLI_UI_LANGUAGE`) a označí run jako částečný
 
 **Brána G3:** po 20 lokálních a 20 CI bězích nezůstane na disku žádný XML ani stažený soubor
 a opakovaný `cta pull` nic nezdvojí.
@@ -304,7 +305,7 @@ CREATE TABLE Failures (                   -- každá zpráva uložená jen jedno
 CREATE TABLE Results (
     RunId          INTEGER NOT NULL REFERENCES Runs(RunId) ON DELETE CASCADE,
     TestCaseId     INTEGER NOT NULL REFERENCES TestCases(TestCaseId),
-    Outcome        TEXT NOT NULL CHECK (Outcome IN
+    Outcome        TEXT NOT NULL CHECK     OutcomeDetail  TEXT,                   -- co report říká navíc: Timeout, Warning, xfail… (Outcome IN
                    ('Passed','Failed','Error','Skipped','NotRun','Inconclusive')),
     DurationMs     INTEGER NOT NULL,
     Occurrences    INTEGER NOT NULL DEFAULT 1,  -- výskyty stejného jména v runu

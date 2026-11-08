@@ -140,6 +140,7 @@ public sealed class NUnitReport
         var className = reader.GetAttribute("classname");
         var methodName = reader.GetAttribute("methodname");
         var label = reader.GetAttribute("label");
+        var site = reader.GetAttribute("site");
         var duration = ReadSeconds(reader, "duration");
 
         string? message = null;
@@ -195,6 +196,7 @@ public sealed class NUnitReport
                 MethodName = methodName is null ? null : WithoutParameters(methodName),
             },
             Outcome = ToOutcome(result, label),
+            OutcomeDetail = ToDetail(result, label, site, message),
             Duration = duration,
             Failure = CreateFailure(declaredType: null, message, stackTrace),
             Output = JoinOutput(output, stdErr: null),
@@ -213,6 +215,41 @@ public sealed class NUnitReport
             "Inconclusive" => TestOutcome.Inconclusive,
             _ => throw new InvalidDataException($"Unknown NUnit result '{result}'."),
         };
+
+    /// <summary>
+    /// The most specific thing the report says. An unknown label is kept as it is: the
+    /// verdict does not depend on it, and it would be lost once the XML is deleted.
+    /// </summary>
+    private static string? ToDetail(string result, string? label, string? site, string? message)
+    {
+        if (result == "Warning")
+        {
+            return "Warning";
+        }
+
+        if (message?.StartsWith("Test exceeded Timeout value", StringComparison.Ordinal) == true)
+        {
+            return "Timeout";
+        }
+
+        if (label is not null && label != "Error")
+        {
+            return label;
+        }
+
+        if (message?.StartsWith("TearDown :", StringComparison.Ordinal) == true)
+        {
+            return "Teardown";
+        }
+
+        return site switch
+        {
+            "SetUp" => "Setup",
+            "TearDown" => "Teardown",
+            "Parent" => "Parent",
+            _ => null,
+        };
+    }
 
     private static int CounterOf(string result) =>
         result switch

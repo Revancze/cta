@@ -109,6 +109,7 @@ public sealed class JUnitReport
         var status = reader.GetAttribute("status");
 
         var outcome = TestOutcome.Passed;
+        string? detail = null;
         Failure? failure = null;
         string? stdOut = null;
         string? stdErr = null;
@@ -137,6 +138,7 @@ public sealed class JUnitReport
                         if (Severity(problem) > Severity(outcome))
                         {
                             outcome = problem;
+                            detail = ToDetail(problem, type, message, status);
                             failure = CreateFailure(type, message, text);
                         }
 
@@ -166,10 +168,42 @@ public sealed class JUnitReport
         {
             TestCase = CreateTestCase(name, className),
             Outcome = outcome,
+            OutcomeDetail = detail,
             Duration = duration,
             Failure = failure,
             Output = JoinOutput(stdOut, stdErr),
         };
+    }
+
+    /// <summary>
+    /// Only markers a known tool writes in a fixed form, so an ordinary message that happens
+    /// to mention a timeout gets no detail.
+    /// </summary>
+    private static string? ToDetail(
+        TestOutcome outcome,
+        string? type,
+        string? message,
+        string? status
+    )
+    {
+        if (type == "pytest.xfail")
+        {
+            return "xfail";
+        }
+
+        if (outcome == TestOutcome.Failed && status == "fail" && message == "Timeout")
+        {
+            return "Timeout";
+        }
+
+        if (outcome != TestOutcome.Error || message is null)
+        {
+            return null;
+        }
+
+        return message.StartsWith("failed on setup with", StringComparison.Ordinal) ? "Setup"
+            : message.StartsWith("failed on teardown with", StringComparison.Ordinal) ? "Teardown"
+            : null;
     }
 
     private static TestOutcome ToOutcome(string element) =>

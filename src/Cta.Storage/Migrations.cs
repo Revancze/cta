@@ -68,5 +68,8 @@ internal static class Migrations
             CREATE INDEX IX_Runs_Commit ON Runs(CommitSha);
             CREATE INDEX IX_Failures_Signature ON Failures(Signature);
             """,
+        """
+            ALTER TABLE Results ADD COLUMN OutcomeDetail TEXT;
+            """,
     ];
 }

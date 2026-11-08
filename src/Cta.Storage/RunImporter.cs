@@ -204,11 +204,21 @@ public static class RunImporter
                 connection,
                 transaction,
                 """
-                INSERT INTO Results (RunId, TestCaseId, Outcome, DurationMs, FailureId, Output)
-                VALUES ($runId, $testCaseId, $outcome, $durationMs, $failureId, $output)
+                INSERT INTO Results (RunId, TestCaseId, Outcome, OutcomeDetail, DurationMs, FailureId,
+                                     Output)
+                VALUES ($runId, $testCaseId, $outcome, $outcomeDetail, $durationMs, $failureId,
+                        $output)
                 ON CONFLICT (RunId, TestCaseId) DO UPDATE SET
                     Occurrences = Occurrences + 1,
                     DurationMs = DurationMs + excluded.DurationMs,
+                    OutcomeDetail = CASE
+                        WHEN instr('NotRun Skipped Passed Inconclusive Failed Error', excluded.Outcome)
+                           > instr('NotRun Skipped Passed Inconclusive Failed Error', Outcome)
+                        THEN excluded.OutcomeDetail
+                        WHEN excluded.Outcome = Outcome
+                        THEN coalesce(OutcomeDetail, excluded.OutcomeDetail)
+                        ELSE OutcomeDetail
+                    END,
                     FailureId = CASE
                         WHEN instr('NotRun Skipped Passed Inconclusive Failed Error', excluded.Outcome)
                            > instr('NotRun Skipped Passed Inconclusive Failed Error', Outcome)
@@ -226,6 +236,7 @@ public static class RunImporter
                 "$runId",
                 "$testCaseId",
                 "$outcome",
+                "$outcomeDetail",
                 "$durationMs",
                 "$failureId",
                 "$output"
@@ -241,6 +252,7 @@ public static class RunImporter
             parameters["$runId"].Value = _runId;
             parameters["$testCaseId"].Value = testCaseId;
             parameters["$outcome"].Value = ToText(result.Outcome);
+            parameters["$outcomeDetail"].Value = OrNull(result.OutcomeDetail);
             parameters["$durationMs"].Value = (long)result.Duration.TotalMilliseconds;
             parameters["$failureId"].Value = failureId;
             parameters["$output"].Value = OrNull(result.Output);

@@ -126,6 +126,20 @@ public sealed class TrxReportTests : IDisposable
         Assert.Throws<InvalidDataException>(() => TrxReport.Open(path));
     }
 
+    [Fact]
+    public void Report_of_a_crashed_run_without_results_is_refused()
+    {
+        Assert.Throws<InvalidDataException>(() => TrxReport.Open(SamplePath("crash.trx")));
+    }
+
+    [Fact]
+    public void Empty_run_without_an_error_is_accepted()
+    {
+        var path = WriteReport(results: 0, declaredTotal: 0);
+
+        Assert.Empty(TrxReport.Open(path).ReadResults());
+    }
+
     // @relation(CTA-PARSE-002, scope=range_end)
 
     // @relation(CTA-PARSE-003, scope=range_start)

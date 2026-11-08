@@ -29,6 +29,11 @@ UID: CTA-DB-005
 TITLE: Zavřené spojení uvolní soubor
 STATEMENT: Po zavření spojení nástroj nedrží databázový soubor otevřený, takže ho lze přesunout nebo smazat i na Windows.
 
+[REQUIREMENT]
+UID: CTA-DB-006
+TITLE: Migrace zachová data
+STATEMENT: Databáze ze starší verze se při otevření převede na aktuální schéma a všechna dosavadní data zůstanou zachovaná.
+
 [[/SECTION]]
 
 [[SECTION]]

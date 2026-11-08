@@ -42,6 +42,7 @@ public sealed class TrxReport
         var classNames = new Dictionary<Guid, string>();
         var sharedNames = new HashSet<string>(StringComparer.Ordinal);
         int? declaredTotal = null;
+        var runFailed = false;
         DateTimeOffset? started = null;
         DateTimeOffset? finished = null;
 
@@ -72,6 +73,9 @@ public sealed class TrxReport
                 case "UnitTest":
                     ReadDefinition(reader, classNames, sharedNames);
                     continue;
+                case "RunInfo" when reader.GetAttribute("outcome") == "Error":
+                    runFailed = true;
+                    break;
                 case "Counters":
                     declaredTotal = int.Parse(
                         Required(reader, "total"),
@@ -86,6 +90,13 @@ public sealed class TrxReport
         if (declaredTotal is null)
         {
             throw new InvalidDataException("TRX report has no result counters.");
+        }
+
+        // A crashed test host leaves a valid report with no results. An error alone proves
+        // nothing, xUnit writes one for every failed test.
+        if (declaredTotal == 0 && runFailed)
+        {
+            throw new InvalidDataException("TRX report has no results and the run failed.");
         }
 
         return new TrxReport(path, classNames, declaredTotal.Value, started, finished);
@@ -151,7 +162,8 @@ public sealed class TrxReport
     private TestResult ReadResult(XmlReader reader)
     {
         var testName = Required(reader, "testName");
-        var outcome = ToOutcome(Required(reader, "outcome"));
+        var reportedOutcome = Required(reader, "outcome");
+        var outcome = ToOutcome(reportedOutcome);
         var durationText = reader.GetAttribute("duration");
         var duration = durationText is null
             ? TimeSpan.Zero
@@ -197,6 +209,9 @@ public sealed class TrxReport
         {
             TestCase = CreateTestCase(testName, className),
             Outcome = outcome,
+            OutcomeDetail = reportedOutcome is "Timeout" or "Aborted" or "Disconnected"
+                ? reportedOutcome
+                : null,
             Duration = duration,
             // TRX uses ErrorInfo also for the reason of a skipped test, so it is kept for every
             // outcome.

@@ -13,6 +13,7 @@ public sealed class ReportFormatDetectorTests : IDisposable
     [Theory]
     [InlineData("xunit.trx", ReportFormat.Trx)]
     [InlineData("nunit.trx", ReportFormat.Trx)]
+    [InlineData("crash.trx", ReportFormat.Trx)]
     [InlineData("pytest.xml", ReportFormat.JUnit)]
     [InlineData("ctest.xml", ReportFormat.JUnit)]
     [InlineData("dotnet-junit.xml", ReportFormat.JUnit)]

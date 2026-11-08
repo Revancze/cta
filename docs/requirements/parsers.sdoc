@@ -12,7 +12,7 @@ STATEMENT: Parser přečte z TRX všechny výsledky včetně celého jména test
 [REQUIREMENT]
 UID: CTA-PARSE-002
 TITLE: Neúplný report se odmítne
-STATEMENT: Report s jiným počtem výsledků, než sám uvádí, bez čítačů, s neznámým výsledkem nebo jiného formátu parser odmítne. Nejistota se nikdy nezmění v úspěch.
+STATEMENT: Report s jiným počtem výsledků, než sám uvádí, bez čítačů, s neznámým výsledkem nebo jiného formátu parser odmítne. Odmítne i report bez výsledků z běhu, který skončil chybou. Nejistota se nikdy nezmění v úspěch.
 
 [REQUIREMENT]
 UID: CTA-PARSE-003
@@ -63,5 +63,15 @@ STATEMENT: Parser přečte NUnit 3 XML z nunit3-console i z NunitXml.TestLoggeru
 UID: CTA-PARSE-009
 TITLE: Neúplný NUnit report se odmítne
 STATEMENT: Report s jiným kořenem, bez celkového počtu, s počtem testů nebo výsledků, který nesedí s tím, co report uvádí, s neznámým výsledkem nebo neplatnou dobou běhu parser odmítne. Počet, který nástroj neuvádí, se nekontroluje.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Detail výsledku
+
+[REQUIREMENT]
+UID: CTA-PARSE-010
+TITLE: Detail výsledku se neztratí
+STATEMENT: Co report uvádí nad rámec šesti stavů (například Timeout, Warning, xfail, Setup), se uloží do OutcomeDetail, jen pokud to report říká v pevné podobě. Na detailu nezávisí verdikt. U sloučených výsledků patří detail k výsledku, který vyhrál.
 
 [[/SECTION]]
